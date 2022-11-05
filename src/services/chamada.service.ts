@@ -11,7 +11,7 @@ export class ChamadaService {
   }
 
   findAll() {
-    return this.configService.get('DATABASE_NAME');
+    return `This action returns all chamada`;
   }
 
   findOne(id: number) {
