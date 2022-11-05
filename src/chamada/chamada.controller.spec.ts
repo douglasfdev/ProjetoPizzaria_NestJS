@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ChamadaController } from './chamada.controller';
+import { ChamadaController } from './controllers/chamada.controller';
 import { ChamadaService } from './chamada.service';
 
 describe('ChamadaController', () => {

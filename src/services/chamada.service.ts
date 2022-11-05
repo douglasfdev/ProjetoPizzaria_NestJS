@@ -1,15 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { CreateChamadaDto } from './dto/create-chamada.dto';
-import { UpdateChamadaDto } from './dto/update-chamada.dto';
+import { ConfigService } from '@nestjs/config';
+import { CreateChamadaDto } from '../chamada/dto/create-chamada.dto';
+import { UpdateChamadaDto } from '../chamada/dto/update-chamada.dto';
 
 @Injectable()
 export class ChamadaService {
+  constructor(private readonly configService: ConfigService) {}
   create(createChamadaDto: CreateChamadaDto) {
     return 'This action adds a new chamada';
   }
 
   findAll() {
-    return `This action returns all chamada`;
+    return this.configService.get('DATABASE_NAME');
   }
 
   findOne(id: number) {

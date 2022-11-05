@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ChamadaService } from './chamada.service';
-import { CreateChamadaDto } from './dto/create-chamada.dto';
-import { UpdateChamadaDto } from './dto/update-chamada.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { ChamadaService } from '../../services/chamada.service';
+import { CreateChamadaDto } from '../dto/create-chamada.dto';
+import { UpdateChamadaDto } from '../dto/update-chamada.dto';
 
-@Controller('chamada')
+@Controller('chamada/taxista')
 export class ChamadaController {
   constructor(private readonly chamadaService: ChamadaService) {}
 

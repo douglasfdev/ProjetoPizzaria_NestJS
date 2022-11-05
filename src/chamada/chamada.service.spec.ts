@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ChamadaService } from './chamada.service';
+import { ChamadaService } from '../services/chamada.service';
 
 describe('ChamadaService', () => {
   let service: ChamadaService;
