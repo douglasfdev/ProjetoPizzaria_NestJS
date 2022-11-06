@@ -1,4 +1,4 @@
-# API Desenvolvida para empresas usarem os serviços de chamada de taxistas da Vá de Taxi
+# Essa API será usada para fornecer os serviços Vá de Taxi para chamadas de taxistas, e interagir com o banco de dados sobre tudo relacionado a chamada de taxistas.
 
 ##### Váriaveis de Ambiente
 ```

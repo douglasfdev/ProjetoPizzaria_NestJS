@@ -1,13 +1,13 @@
 class Origem {
-  lat: number;
-  lon: number;
-  rua: string;
-  numero: string;
-  complemento?: string;
-  observacoes: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
+  readonly lat: number;
+  readonly lon: number;
+  readonly rua: string;
+  readonly numero: string;
+  readonly complemento?: string;
+  readonly observacoes: string;
+  readonly bairro: string;
+  readonly cidade: string;
+  readonly estado: string;
 }
 
 class Destino {
