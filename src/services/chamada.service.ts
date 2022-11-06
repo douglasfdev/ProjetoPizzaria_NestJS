@@ -11,7 +11,7 @@ export class ChamadaService {
   }
 
   findAll() {
-    return `This action returns all chamada`;
+    return ``;
   }
 
   findOne(id: number) {
