@@ -7,10 +7,12 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ChamadaService } from '../../services/chamada.service';
 import { CreateChamadaDto } from '../dto/create-chamada.dto';
 import { UpdateChamadaDto } from '../dto/update-chamada.dto';
 
+@ApiTags('Chamadas Taxista')
 @Controller('chamada/taxista')
 export class ChamadaController {
   constructor(private readonly chamadaService: ChamadaService) {}
