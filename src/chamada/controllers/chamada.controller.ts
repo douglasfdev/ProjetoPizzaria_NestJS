@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ChamadaService } from '../../services/chamada.service';
+import { ChamadaService } from '../services/chamada.service';
 import { CreateChamadaDto } from '../dto/create-chamada.dto';
 import { UpdateChamadaDto } from '../dto/update-chamada.dto';
 

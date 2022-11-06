@@ -2,9 +2,9 @@ import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable } from '@nestjs/common';
 import { Chamada } from 'src/chamada/entities/chamada.entity';
 import { Repository } from 'typeorm';
-import { CreateChamadaDto } from '../chamada/dto/create-chamada.dto';
-import { UpdateChamadaDto } from '../chamada/dto/update-chamada.dto';
-import { HeadersConfig } from '../configs/headers.config';
+import { CreateChamadaDto } from '../dto/create-chamada.dto';
+import { UpdateChamadaDto } from '../dto/update-chamada.dto';
+import { HeadersConfig } from '../../configs/headers.config';
 
 @Injectable()
 export class ChamadaService {

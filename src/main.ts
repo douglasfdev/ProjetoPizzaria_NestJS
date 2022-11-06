@@ -1,20 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { setupSwagger } from './docs/swagger.config';
 
-async function bootstrap() {
+(async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const config = new DocumentBuilder()
-    .setTitle('VDT API Chamada Taaxista')
-    .setDescription(
-      'API feita com propósito para integraçao de empresas para nossos serviços',
-    )
-    .setVersion('1.0')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  setupSwagger(app);
 
   await app.listen(3000);
-}
-bootstrap();
+})();
