@@ -8,7 +8,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('VDT API Chamada Taaxista')
     .setDescription(
-      'API feita com propósito de integraçao de empresas para nossos serviços',
+      'API feita com propósito para integraçao de empresas para nossos serviços',
     )
     .setVersion('1.0')
     .build();
