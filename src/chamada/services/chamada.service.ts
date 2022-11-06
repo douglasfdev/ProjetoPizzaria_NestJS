@@ -4,7 +4,7 @@ import { Chamada } from 'src/chamada/entities/chamada.entity';
 import { Repository } from 'typeorm';
 import { CreateChamadaDto } from '../dto/create-chamada.dto';
 import { UpdateChamadaDto } from '../dto/update-chamada.dto';
-import { HeadersConfig } from '../../configs/headers.config';
+import { HeadersConfig } from 'src/configs/headers.config';
 
 @Injectable()
 export class ChamadaService {
@@ -19,7 +19,7 @@ export class ChamadaService {
   }
 
   findAll() {
-    return ``;
+    return this.headersConfig.getHeaders();
   }
 
   findOne(id: number) {
