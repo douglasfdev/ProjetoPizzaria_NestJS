@@ -2,8 +2,8 @@ import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable } from '@nestjs/common';
 import { Chamada } from 'src/chamada/entities/chamada.entity';
 import { Repository } from 'typeorm';
-import { CreateChamadaDto } from '../dto/create-chamada.dto';
-import { UpdateChamadaDto } from '../dto/update-chamada.dto';
+import { CreateChamadaDto } from '@dto/create-chamada.dto';
+import { UpdateChamadaDto } from '@dto/update-chamada.dto';
 import { HeadersConfig } from '@configs/headers.config';
 import { lastValueFrom } from 'rxjs';
 import { ConfigService } from '@nestjs/config';
@@ -19,6 +19,7 @@ export class ChamadaService {
     @Inject('CHAMADA_REPOSITORY')
     private photoRepository: Repository<Chamada>,
   ) {}
+
   async create(createChamadaDto: CreateChamadaDto) {
     return 'This action adds a new chamada';
   }
