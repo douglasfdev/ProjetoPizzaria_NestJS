@@ -5,32 +5,45 @@ import { Repository } from 'typeorm';
 import { CreateChamadaDto } from '../dto/create-chamada.dto';
 import { UpdateChamadaDto } from '../dto/update-chamada.dto';
 import { HeadersConfig } from '@configs/headers.config';
+import { lastValueFrom } from 'rxjs';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ChamadaService {
+  private readonly PRD_CHAMADA_URL: string = new ConfigService().get<string>(
+    'PRD_CHAMADA_URL',
+  );
   constructor(
     private readonly headersConfig: HeadersConfig,
     private readonly httpService: HttpService,
     @Inject('CHAMADA_REPOSITORY')
     private photoRepository: Repository<Chamada>,
   ) {}
-  create(createChamadaDto: CreateChamadaDto) {
+  async create(createChamadaDto: CreateChamadaDto) {
     return 'This action adds a new chamada';
   }
 
-  findAll() {
-    return this.headersConfig.getHeaders();
+  async findAll() {
+    const url = this.PRD_CHAMADA_URL;
+    console.log(url);
+    const getChamada = await lastValueFrom(
+      this.httpService.get(url, {
+        headers: this.headersConfig.getHeaders(),
+      }),
+    );
+
+    return getChamada.data;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} chamada`;
   }
 
-  update(id: number, updateChamadaDto: UpdateChamadaDto) {
+  async update(id: number, updateChamadaDto: UpdateChamadaDto) {
     return `This action updates a #${id} chamada`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} chamada`;
   }
 }

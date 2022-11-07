@@ -10,6 +10,6 @@ WORKDIR /home/node/adpp
 
 EXPOSE 3000
 
-CMD npm install && \
-npm run build  && \
-npm run start:dbdev
+RUN npm install
+RUN npm run build
+RUN npm run start:dbdev
