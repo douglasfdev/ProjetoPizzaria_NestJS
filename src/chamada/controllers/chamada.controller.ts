@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ChamadaService } from '@services/chamada.service';
-import { CreateChamadaDto } from '@dto/create-chamada.dto';
-import { UpdateChamadaDto } from '@dto/update-chamada.dto';
+import { CreateChamadaDto } from '@dtos/create-chamada.dto';
+import { UpdateChamadaDto } from '@dtos/update-chamada.dto';
 
 @ApiTags('Chamadas Taxista')
 @Controller('chamada/taxista')

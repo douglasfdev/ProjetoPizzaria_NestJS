@@ -12,7 +12,7 @@
     "baseUrl": "./",
     "paths": {
       "@configs/*": ["src/configs/*"],
-      "@dto/*": ["src/chamada/dto/*"],
+      "@dtos/*": ["src/chamada/dto/*"],
       "@services/*": ["src/chamada/services/*"],
       "@entities/*": ["src/chamada/entities/*"],
       "@controllers/*": ["src/chamada/controllers/*"]
