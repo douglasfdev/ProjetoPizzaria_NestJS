@@ -1,7 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Inject, Injectable } from '@nestjs/common';
-import { Chamada } from 'src/chamada/entities/chamada.entity';
-import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
 import { CreateChamadaDto } from '@dtos/create-chamada.dto';
 import { UpdateChamadaDto } from '@dtos/update-chamada.dto';
 import { HeadersConfig } from '@configs/headers.config';
@@ -16,8 +14,6 @@ export class ChamadaService {
   constructor(
     private readonly headersConfig: HeadersConfig,
     private readonly httpService: HttpService,
-    @Inject('CHAMADA_REPOSITORY')
-    private photoRepository: Repository<Chamada>,
   ) {}
 
   async create(createChamadaDto: CreateChamadaDto) {
