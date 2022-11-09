@@ -14,10 +14,8 @@ src
 │   │   ├── env.helper.ts
 ...etc.
 ```
-Para ambiente de desenvolvimento, digite no terminal:
-`export NODE_ENV=development`
-Para ambiente de desenvolvimento, digite no terminal:
-`export NODE_ENV=production`
+Para ambiente de desenvolvimento, digite no terminal: `export NODE_ENV=development` \
+Para ambiente de desenvolvimento, digite no terminal: `export NODE_ENV=production`
 ##### Docker
 _
 ##### Swagger

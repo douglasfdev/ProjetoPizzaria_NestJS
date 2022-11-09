@@ -3,9 +3,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export function setupSwagger(app: INestApplication) {
   const config = new DocumentBuilder()
-    .setTitle('VDT API Chamada Taaxista')
+    .setTitle('API VDT Hub B2B')
     .setDescription(
-      'API feita com propósito para integraçao de empresas para nossos serviços',
+      'API feita com propósito para integraçao de empresas para nossos serviços de chamada de taxista',
     )
     .setVersion('1.0')
     .build();
