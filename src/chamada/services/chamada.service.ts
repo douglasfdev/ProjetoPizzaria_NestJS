@@ -8,19 +8,19 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ChamadaService {
-  private readonly PRD_CHAMADA_URL: string = new ConfigService().get<string>(
-    'PRD_CHAMADA_URL',
-  );
+  private readonly PRD_CHAMADA_URL = new ConfigService().get('PRD_CHAMADA_URL');
   constructor(
     private readonly headersConfig: HeadersConfig,
     private readonly httpService: HttpService,
   ) {}
 
-  async create(createChamadaDto: CreateChamadaDto) {
+  // Cria chamada da corrida
+  async createCall(createChamadaDto: CreateChamadaDto) {
     return 'This action adds a new chamada';
   }
 
-  async findAll() {
+  // Pega o status da corrida
+  async status() {
     const url = this.PRD_CHAMADA_URL;
     console.log(url);
     const getChamada = await lastValueFrom(
@@ -31,15 +31,22 @@ export class ChamadaService {
 
     return getChamada.data;
   }
-
-  async findOne(id: number) {
-    return `This action returns a #${id} chamada`;
+  // Pega o status da corrida pelo D
+  async statusCallById(id: number) {
+    return `This action returns a #${id} status`;
   }
 
-  async update(id: number, updateChamadaDto: UpdateChamadaDto) {
+  // Pega a referencia por ID
+  async referenceById(id: number) {
+    return `This action returns a #${id} referencia`;
+  }
+
+  // Atualiza Chamada
+  async updateCall(id: number, updateChamadaDto: UpdateChamadaDto) {
     return `This action updates a #${id} chamada`;
   }
 
+  // Talvez nao precise, mas deleta a chamada
   async remove(id: number) {
     return `This action removes a #${id} chamada`;
   }

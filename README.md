@@ -23,4 +23,4 @@ Para acessar as rotas e documentaçao das rotas e suas propriedades basta acessa
 
 Para ver a documentaçao em JSON basta adicionar `-json` no fim do link: http://localhost:3000/docs-json
 
-Para ver a documentaçao em YML basta adicionar `-yml` no fim do link: http://localhost:3000/docs-yml
+Para ver a documentaçao em YML basta adicionar `-yaml` no fim do link: http://localhost:3000/docs-yaml

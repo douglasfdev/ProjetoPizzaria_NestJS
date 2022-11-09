@@ -18,23 +18,28 @@ export class ChamadaController {
   constructor(private readonly chamadaService: ChamadaService) {}
 
   @Post()
-  create(@Body() createChamadaDto: CreateChamadaDto) {
-    return this.chamadaService.create(createChamadaDto);
+  createCall(@Body() createChamadaDto: CreateChamadaDto) {
+    return this.chamadaService.createCall(createChamadaDto);
   }
 
-  @Get()
-  findAll() {
-    return this.chamadaService.findAll();
+  @Get('status')
+  status() {
+    return this.chamadaService.status();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.chamadaService.findOne(+id);
+  @Get('referencia/:idChamada')
+  statusCallById(@Param('id') id: string) {
+    return this.chamadaService.statusCallById(+id);
+  }
+
+  @Get('referencia/:idReference')
+  referenceById(@Param('id') id: string) {
+    return this.chamadaService.referenceById(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateChamadaDto: UpdateChamadaDto) {
-    return this.chamadaService.update(+id, updateChamadaDto);
+    return this.chamadaService.updateCall(+id, updateChamadaDto);
   }
 
   @Delete(':id')
