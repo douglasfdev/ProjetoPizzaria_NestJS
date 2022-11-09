@@ -15,7 +15,7 @@ src
 ...etc.
 ```
 Para ambiente de desenvolvimento, digite no terminal: `npm run start:dev` \
-Para ambiente de produçao, digite no terminal: `npm start`
+Para ambiente de produçao, digite no terminal: `npm run start:prod`
 ##### Docker
 _
 ##### Swagger

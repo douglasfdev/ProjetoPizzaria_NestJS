@@ -1,15 +1,30 @@
-FROM node:lts-alpine
+# Development mode
+FROM node:lts-alpine As development
 
 RUN apk add --no-cache bash
 
-RUN npm install -g @nestjs/cli
+# Create app directory, this is in our container/in our image
+WORKDIR /home/node/app
 
-USER node
-
-WORKDIR /home/node/adpp
-
-EXPOSE 3000
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
 RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
+COPY . .
+
 RUN npm run build
-RUN npm run start:dbdev
+
+## Digitar no console Docker run -p 3000:3000 vdt-hub-b2b
+EXPOSE 3000
+
+CMD [ "node", "dist/main" ]
+
+#Production mode
+
+#Local mode
