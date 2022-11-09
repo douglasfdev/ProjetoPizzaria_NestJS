@@ -14,11 +14,13 @@ src
 │   │   ├── env.helper.ts
 ...etc.
 ```
-Para ambiente de desenvolvimento, digite no terminal: `export NODE_ENV=development` \
-Para ambiente de desenvolvimento, digite no terminal: `export NODE_ENV=production`
+Para ambiente de desenvolvimento, digite no terminal: `npm run start:dev` \
+Para ambiente de produçao, digite no terminal: `npm start`
 ##### Docker
 _
 ##### Swagger
 Para acessar as rotas e documentaçao das rotas e suas propriedades basta acessar ao endpoint: http://localhost:3000/docs
 
 Para ver a documentaçao em JSON basta adicionar `-json` no fim do link: http://localhost:3000/docs-json
+
+Para ver a documentaçao em YML basta adicionar `-yml` no fim do link: http://localhost:3000/docs-yml
