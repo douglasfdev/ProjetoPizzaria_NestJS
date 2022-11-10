@@ -1,46 +1,31 @@
-class Origem {
-  readonly lat: number;
-  readonly lon: number;
-  readonly rua: string;
-  readonly numero: string;
-  readonly complemento?: string;
-  readonly observacoes: string;
-  readonly bairro: string;
-  readonly cidade: string;
-  readonly estado: string;
-}
-
-class Destino {
-  lat: number;
-  lon: number;
-  rua: string;
-  numero: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
-}
-
-class Opcionais {
-  ar: boolean;
-  portamalas: boolean;
-  animal: boolean;
-  cadeirante: boolean;
-  premier: boolean;
-  categoria: number;
-}
-
-class Passageiro {
-  nome: string;
-  telefone: string;
-}
+import { IsObject, IsString } from 'class-validator';
+import { Destino } from './destino.dto';
+import { Opcionais } from './opcionais.dto';
+import { Origem } from './origem.dto';
+import { Passageiro } from './passageiros.dto';
 
 export class CreateChamadaDto {
-  origem: Origem;
-  destino: Destino;
-  opcionais: Opcionais;
-  passageiro: Passageiro;
-  justificativa?: string;
-  referenciaId: string;
-  atendimentoId: string;
-  empresaAtendimento: string;
+  @IsObject()
+  readonly origem: Origem;
+
+  @IsObject()
+  readonly destino: Destino;
+
+  @IsObject()
+  readonly opcionais: Opcionais;
+
+  @IsObject()
+  readonly passageiro: Passageiro;
+
+  @IsString()
+  readonly justificativa?: string;
+
+  @IsString()
+  readonly referenciaId: string;
+
+  @IsString()
+  readonly atendimentoId: string;
+
+  @IsString()
+  readonly empresaAtendimento: string;
 }
