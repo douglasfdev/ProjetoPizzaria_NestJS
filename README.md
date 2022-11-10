@@ -17,7 +17,7 @@ src
 Para ambiente de desenvolvimento, digite no terminal: `npm run start:dev` \
 Para ambiente de produçao, digite no terminal: `npm run start:prod`
 ##### Docker
-Apontar no Dockerfile a váriavel de ambiente desejada
+Apontar no Dockerfile a váriavel de ambiente desejada <!-- TODO -->
 
 Digitar no terminal: `docker-compose up-d`
 e o projeto estará rodando na porta `3000`

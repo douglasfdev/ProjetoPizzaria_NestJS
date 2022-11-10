@@ -19,6 +19,11 @@ export class ChamadaService {
     return 'This action adds a new chamada';
   }
 
+  // Cria uma configuraçao externa
+  // async externalConfig(createExternalConfigDto: CreateExternalConfigDto) {
+  //   return 'This action add a new external config';
+  // }
+
   // Pega o status da corrida
   async status() {
     const url = this.PRD_CHAMADA_URL;

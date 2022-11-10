@@ -13,21 +13,26 @@ import { CreateChamadaDto } from '@dtos/create-chamada.dto';
 import { UpdateChamadaDto } from '@dtos/update-chamada.dto';
 
 @ApiTags('Chamadas Taxista')
-@Controller('chamada/taxista')
+@Controller('v1/')
 export class ChamadaController {
   constructor(private readonly chamadaService: ChamadaService) {}
 
-  @Post()
+  @Post('chamada')
   createCall(@Body() createChamadaDto: CreateChamadaDto) {
     return this.chamadaService.createCall(createChamadaDto);
   }
+
+  // @Post('config')
+  // externalConfig(@Body() createExternalConfigDto: createExternalConfigDto) {
+  //   return this.chamadaService.externalConfig(createExternalConfigDto);
+  // }
 
   @Get('status')
   status() {
     return this.chamadaService.status();
   }
 
-  @Get('referencia/:idChamada')
+  @Get('chamada/:idChamada')
   statusCallById(@Param('id') id: string) {
     return this.chamadaService.statusCallById(+id);
   }
@@ -37,7 +42,7 @@ export class ChamadaController {
     return this.chamadaService.referenceById(+id);
   }
 
-  @Patch(':id')
+  @Patch('v1/:id')
   update(@Param('id') id: string, @Body() updateChamadaDto: UpdateChamadaDto) {
     return this.chamadaService.updateCall(+id, updateChamadaDto);
   }
