@@ -37,12 +37,12 @@ export class ChamadaController {
     return this.chamadaService.statusCallById(+id);
   }
 
-  @Get('referencia/:idReference')
+  @Get('reference/:idReference')
   referenceById(@Param('id') id: string) {
     return this.chamadaService.referenceById(+id);
   }
 
-  @Patch('v1/:id')
+  @Patch('chamada/:id')
   update(@Param('id') id: string, @Body() updateChamadaDto: UpdateChamadaDto) {
     return this.chamadaService.updateCall(+id, updateChamadaDto);
   }

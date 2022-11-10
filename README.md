@@ -19,7 +19,7 @@ Para ambiente de produçao, digite no terminal: `npm run start:prod`
 ##### Docker
 Apontar no Dockerfile a váriavel de ambiente desejada <!-- TODO -->
 
-Digitar no terminal: `docker-compose up-d` e o projeto estará rodando na porta `3000`
+Digitar no terminal: `docker-compose up -d` e o projeto estará rodando na porta `3000`
 ##### Swagger
 Para acessar as rotas e documentaçao das rotas e suas propriedades basta acessar ao endpoint: http://localhost:3000/docs
 

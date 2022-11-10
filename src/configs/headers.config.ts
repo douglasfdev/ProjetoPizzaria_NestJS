@@ -1,14 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { Header } from 'src/types/Header';
 
 @Injectable()
 export class HeadersConfig {
   constructor(public configService: ConfigService) {}
-  getHeaders(): {
-    APIPP_CUSTOMER: string;
-    APIPP_PRIVATE: string;
-    APIPP_HASH: string;
-  } {
+  getHeaders(): Header {
     return {
       APIPP_CUSTOMER: this.configService.get('APIPP_CUSTOMER'),
       APIPP_PRIVATE: this.configService.get('APIPP_PRIVATE'),
