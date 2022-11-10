@@ -17,10 +17,10 @@ src
 Para ambiente de desenvolvimento, digite no terminal: `npm run start:dev` \
 Para ambiente de produçao, digite no terminal: `npm run start:prod`
 ##### Docker
-Apontar no Dockerfile
+Apontar no Dockerfile a váriavel de ambiente desejada
 
 Digitar no terminal: `docker-compose up-d`
-Digitar no terminal: `docker run -p 3000:3000 vdt-hub-b2b`
+e o projeto estará rodando na porta `3000`
 ##### Swagger
 Para acessar as rotas e documentaçao das rotas e suas propriedades basta acessar ao endpoint: http://localhost:3000/docs
 
