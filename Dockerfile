@@ -20,7 +20,6 @@ COPY . .
 
 RUN npm run build
 
-## Digitar no console Docker run -p 3000:3000 vdt-hub-b2b
 EXPOSE 3000
 
 CMD [ "node", "dist/main" ]

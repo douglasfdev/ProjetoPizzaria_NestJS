@@ -2,6 +2,7 @@ version: '3'
 
 services:
   app:
+    image: node:lts-alpine
     build: .
     container_name: vdt_hub_b2b
     ports:
@@ -9,4 +10,4 @@ services:
     volumes:
       - .:/home/node/adpp
     environment:
-      NODE_ENV: development
+      - NODE_ENV=development
