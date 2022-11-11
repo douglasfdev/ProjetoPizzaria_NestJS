@@ -12,5 +12,5 @@ import { setupSwagger } from './docs/swagger.config';
 
   setupSwagger(app);
 
-  await app.listen(3001);
+  await app.listen(3000);
 })();

@@ -2,12 +2,13 @@ version: '3'
 
 services:
   app:
+    container_name: vdt_hub_b2b
     image: node:lts-alpine
     build: .
-    container_name: vdt_hub_b2b
+    command: npm run start:dev
     ports:
       - "3000:3000"
     volumes:
-      - .:/home/node/adpp
+      - .:/home/node/app
     environment:
       - NODE_ENV=development

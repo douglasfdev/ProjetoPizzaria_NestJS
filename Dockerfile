@@ -1,5 +1,5 @@
 # Development mode
-FROM node:lts-alpine As development
+FROM node:lts-alpine
 
 RUN apk add --no-cache bash
 
@@ -11,6 +11,7 @@ WORKDIR /home/node/app
 # where available (npm@5+)
 COPY package*.json ./
 
+RUN npm i -g npm
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
@@ -22,8 +23,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD [ "node", "dist/main" ]
-
-#Production mode
-
-#Local mode
+CMD [ "npm", "start" ]
