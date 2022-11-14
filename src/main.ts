@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { setupSwagger } from './docs/swagger.config';
+import { basicAuth } from './auth/basic.auth';
 
 (async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,6 +12,8 @@ import { setupSwagger } from './docs/swagger.config';
   app.use(helmet());
 
   setupSwagger(app);
+
+  app.use(basicAuth);
 
   await app.listen(3000);
 })();
