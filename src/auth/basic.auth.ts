@@ -14,7 +14,7 @@ export function basicAuth(
     throw new UnauthorizedException('Missing Token');
   }
 
-  if (auth !== configService.get<string>('APP_BASIC_TOKEN')) {
+  if (auth !== configService.get('APP_BASIC_TOKEN')) {
     throw new UnauthorizedException('Token mismatch');
   }
 

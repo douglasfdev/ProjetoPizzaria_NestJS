@@ -2,7 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { setupSwagger } from './docs/swagger.config';
-import { basicAuth } from './auth/basic.auth';
+import * as csurf from 'csurf';
+// import { basicAuth } from './auth/basic.auth';
 
 (async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,9 +12,11 @@ import { basicAuth } from './auth/basic.auth';
 
   app.use(helmet());
 
+  app.use(csurf());
+
   setupSwagger(app);
 
-  app.use(basicAuth);
+  // app.use(basicAuth);
 
   await app.listen(3000);
 })();
