@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { setupSwagger } from './docs/swagger.config';
-import * as csurf from 'csurf';
 // import { basicAuth } from './auth/basic.auth';
 
 (async function bootstrap() {
@@ -11,8 +10,6 @@ import * as csurf from 'csurf';
   app.enableCors();
 
   app.use(helmet());
-
-  app.use(csurf());
 
   setupSwagger(app);
 
