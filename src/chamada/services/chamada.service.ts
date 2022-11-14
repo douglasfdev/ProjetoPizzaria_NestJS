@@ -27,7 +27,6 @@ export class ChamadaService {
   // Pega o status da corrida
   async status() {
     const url = this.PRD_CHAMADA_URL;
-    console.log(url);
     const getChamada = await lastValueFrom(
       this.httpService.get(url, {
         headers: this.headersConfig.getHeaders(),
