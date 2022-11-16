@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ChamadaModule } from './chamada/chamada.module';
 import { getEnvPath } from './common/helpers/env.helper';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -11,6 +12,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
     ChamadaModule,
     ConfigModule.forRoot({ envFilePath, isGlobal: true }),
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
