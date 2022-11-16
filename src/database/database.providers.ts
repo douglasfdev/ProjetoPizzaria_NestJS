@@ -7,7 +7,7 @@ export const databaseProviders = [
       const dataSource = new DataSource({
         type: 'sqlite',
         database: 'user-adm.sqlite',
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        entities: [__dirname + '/../**/*.entity.{js,ts}'],
         synchronize: true,
       });
 

@@ -8,17 +8,30 @@ import { User } from './entities/user.entity';
 export class UserService {
   constructor(
     @Inject('USER_REPOSITORY')
-    private readonly userRepository: Repository<User>,
+    private readonly repository: Repository<User>,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
-    const user = this.userRepository.create(createUserDto);
-    return this.userRepository.save(user);
+  async signup(createUserDto: CreateUserDto): Promise<User> {
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(createUserDto.password, salt);
+
+    createUserDto.password = hash;
+
+    const user = this.repository.create(createUserDto);
+    this.repository.save(user);
+    return {
+      ...createUserDto,
+      password: undefined,
+    };
   }
 
   async findByEmail(email: string) {
-    const user = await this.userRepository.findOne({ where: { email } });
+    const user = await this.repository.findOne({ where: { email } });
     if (!user) throw new NotFoundException('usuário nao encontrado');
-    return user;
+    return {
+      name: user.name,
+      email,
+      password: undefined,
+    };
   }
 }
