@@ -1,22 +1,40 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 // import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 
 @ApiTags('User')
-@Controller('user')
+@Controller('v1/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   // @IsPublic()
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() createUserDto: CreateUserDto) {
     return this.userService.signup(createUserDto);
   }
 
   @Get('/:email')
-  findByEmail(@Param('email') email: string) {
+  async findByEmail(@Param('email') email: string) {
     return this.userService.findByEmail(email);
+  }
+
+  @Put(':email')
+  async update(@Param('email') email: string) {
+    return '';
+  }
+
+  @Delete(':email')
+  async delete(@Param('email') email: string) {
+    return '';
   }
 }
