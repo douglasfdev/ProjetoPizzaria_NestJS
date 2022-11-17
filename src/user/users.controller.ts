@@ -32,14 +32,14 @@ export class UsersController {
     return await this.usersService.findOneOrFail(email);
   }
 
-  @Put(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateUserDto) {
-    return await this.usersService.update(id, body);
+  @Put(':email')
+  async update(@Param('email') email: string, @Body() body: UpdateUserDto) {
+    return await this.usersService.update(email, body);
   }
 
-  @Delete(':id')
+  @Delete(':email')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async destroy(@Param('id') id: string) {
-    await this.usersService.destroy(id);
+  async destroy(@Param('email') email: string) {
+    await this.usersService.destroy(email);
   }
 }

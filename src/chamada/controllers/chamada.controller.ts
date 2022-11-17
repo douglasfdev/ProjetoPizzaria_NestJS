@@ -15,8 +15,8 @@ import { UpdateChamadaDto } from '@dtos/update-chamada.dto';
 import { AuthGuard } from '@nestjs/passport';
 
 @ApiHeader({
-  name: 'Basic Token',
-  description: 'Basic token to auth login in our services',
+  name: 'Bearer Token',
+  description: 'Bearar token to auth login in our services',
 })
 @ApiTags('Chamadas Taxista')
 @Controller('v1/')

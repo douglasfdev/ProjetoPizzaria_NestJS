@@ -13,7 +13,13 @@ export class UsersService {
 
   async findOneOrFail(email: string) {
     try {
-      return await this.repository.findOneOrFail({ where: { email } });
+      const user = await this.repository.findOneOrFail({ where: { email } });
+
+      return {
+        ...user,
+        password: undefined,
+        hashPassword: undefined,
+      };
     } catch (error) {
       throw new NotFoundException(error.message);
     }
@@ -21,13 +27,23 @@ export class UsersService {
 
   async store(data: CreateUserDto) {
     const user = this.repository.create(data);
-    return await this.repository.save(user);
+    await this.repository.save(user);
+
+    return {
+      ...user,
+      password: undefined,
+    };
   }
 
   async update(email: string, data: UpdateUserDto) {
     const user = await this.repository.findOneOrFail({ where: { email } });
     this.repository.merge(user, data);
-    return await this.repository.save(user);
+    await this.repository.save(user);
+
+    return {
+      ...user,
+      password: undefined,
+    };
   }
 
   async destroy(email: string) {
