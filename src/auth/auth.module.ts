@@ -7,17 +7,16 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { getEnvPath } from 'src/common/helpers/env.helper';
+import { jwtConfig } from '@configs/jwt.config';
 
-const config = new ConfigService().get('JWT_SECRET');
+const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ envFilePath, isGlobal: true }),
     UsersModule,
     PassportModule,
-    JwtModule.register({
-      privateKey: 'teste',
-      signOptions: { expiresIn: '30d' },
-    }),
+    JwtModule.registerAsync(jwtConfig),
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy],
