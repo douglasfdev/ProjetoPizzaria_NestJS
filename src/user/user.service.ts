@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -12,17 +13,24 @@ export class UserService {
   ) {}
 
   async signup(createUserDto: CreateUserDto): Promise<User> {
-    const salt = await bcrypt.genSalt();
-    const hash = await bcrypt.hash(createUserDto.password, salt);
-
-    createUserDto.password = hash;
-
     const user = this.repository.create(createUserDto);
     this.repository.save(user);
     return {
       ...createUserDto,
-      password: undefined,
+      hashPassword: undefined,
     };
+
+    // const salt = await bcrypt.genSalt();
+    // const hash = await bcrypt.hash(createUserDto.password, salt);
+
+    // createUserDto.password = hash;
+
+    // const user = this.repository.create(createUserDto);
+    // this.repository.save(user);
+    // return {
+    //   ...createUserDto,
+    //   password: undefined,
+    // };
   }
 
   async findByEmail(email: string) {
@@ -34,5 +42,31 @@ export class UserService {
       email,
       password: undefined,
     };
+  }
+
+  async update(email: string, updateUserDto: UpdateUserDto) {
+    const user = await this.repository.findOneOrFail({ where: { email } });
+
+    if (!user) {
+      throw new NotFoundException(`Usuário com email: ${email} nao encontrado`);
+    }
+
+    this.repository.merge(user, updateUserDto);
+    this.repository.save(user);
+
+    return {
+      id: user.id,
+      name: user.name,
+      email,
+      password: undefined,
+    };
+  }
+
+  async delete(email: string) {
+    const user = await this.repository.findOne({ where: { email } });
+    if (!user) {
+      throw new NotFoundException(`Usuário com email: ${email} nao encontrado`);
+    }
+    return this.repository.softDelete({ email });
   }
 }

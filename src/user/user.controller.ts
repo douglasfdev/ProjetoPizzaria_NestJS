@@ -3,13 +3,16 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
+  Patch,
   Post,
-  Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 // import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 
 @ApiTags('User')
@@ -28,13 +31,17 @@ export class UserController {
     return this.userService.findByEmail(email);
   }
 
-  @Put(':email')
-  async update(@Param('email') email: string) {
-    return '';
+  @Patch(':email')
+  async update(
+    @Param('email') email: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return this.userService.update(email, updateUserDto);
   }
 
   @Delete(':email')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('email') email: string) {
-    return '';
+    return this.userService.delete(email);
   }
 }
