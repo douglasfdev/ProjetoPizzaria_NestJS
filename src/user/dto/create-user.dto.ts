@@ -1,30 +1,16 @@
-import { User } from '../entities/user.entity';
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  Matches,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
-import { RegExHelper } from 'src/common/helpers/regex.helpers';
-import { MessagesHelper } from 'src/common/helpers/messages.helper';
+import { IsEmail, IsNotEmpty, Matches } from 'class-validator';
+import { MessagesHelper } from '../../common/helpers/messages.helper';
+import { RegExHelper } from '../../common/helpers/regex.helpers';
 
-export class CreateUserDto extends User {
-  @IsEmail()
-  @IsNotEmpty()
-  email: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(6)
-  @MaxLength(20)
-  @Matches(RegExHelper.password, {
-    message: MessagesHelper.PASSWORD_VALID,
-  })
-  password: string;
-
-  @IsString()
+export class CreateUserDto {
   @IsNotEmpty()
   name: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsNotEmpty()
+  @Matches(RegExHelper.password, { message: MessagesHelper.PASSWORD_VALID })
+  password: string;
 }

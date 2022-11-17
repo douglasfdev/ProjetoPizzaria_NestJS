@@ -1,17 +1,21 @@
-import { hashSync } from 'bcrypt';
 import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
   BeforeInsert,
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
-@Entity()
-export class User {
+import { hashSync } from 'bcrypt';
+
+@Entity('user')
+export class Users {
   @PrimaryGeneratedColumn()
   id?: number;
+
+  @Column()
+  name: string;
 
   @Column()
   email: string;
@@ -19,16 +23,13 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  name: string;
-
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: string;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: string;
 
   @BeforeInsert()
