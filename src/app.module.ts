@@ -5,6 +5,7 @@ import { getEnvPath } from './common/helpers/env.helper';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -17,10 +18,10 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
   ],
   controllers: [],
   providers: [
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: JwtAuthGuard,
-    // },
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
   ],
 })
 export class AppModule {}
