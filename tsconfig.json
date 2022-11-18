@@ -15,7 +15,8 @@
       "@dtos/*": ["src/chamada/dto/*"],
       "@services/*": ["src/chamada/services/*"],
       "@entities/*": ["src/chamada/entities/*"],
-      "@controllers/*": ["src/chamada/controllers/*"]
+      "@controllers/*": ["src/chamada/controllers/*"],
+      "@helpers/*": ["src/common/helpers/*"]
     },
     "incremental": true,
     "skipLibCheck": true,

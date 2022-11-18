@@ -6,18 +6,21 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiHeader, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { ChamadaService } from '@services/chamada.service';
 import { CreateChamadaDto } from '@dtos/create-chamada.dto';
 import { UpdateChamadaDto } from '@dtos/update-chamada.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiHeader({
-  name: 'Basic Token',
-  description: 'Basic token to auth login in our services',
+  name: 'Bearer Token',
+  description: 'Bearar token to auth login in our services',
 })
 @ApiTags('Chamadas Taxista')
 @Controller('v1/')
+@UseGuards(AuthGuard('jwt'))
 export class ChamadaController {
   constructor(private readonly chamadaService: ChamadaService) {}
 

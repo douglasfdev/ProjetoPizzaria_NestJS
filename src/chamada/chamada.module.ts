@@ -8,5 +8,6 @@ import { HeadersConfig } from '@configs/headers.config';
   imports: [HttpModule],
   controllers: [ChamadaController],
   providers: [ChamadaService, HeadersConfig],
+  exports: [ChamadaService],
 })
 export class ChamadaModule {}
