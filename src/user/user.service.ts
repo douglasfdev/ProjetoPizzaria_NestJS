@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -25,7 +25,14 @@ export class UserService {
     };
   }
 
-  findByEmail(email: string) {
-    return this.repository.findOne({ where: { email } });
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ where: { email } });
+
+    if (!user) throw new NotFoundException('Usuário nao encontrado');
+
+    return {
+      ...user,
+      password: undefined,
+    };
   }
 }
