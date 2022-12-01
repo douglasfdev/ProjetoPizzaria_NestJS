@@ -63,3 +63,17 @@ Para ver a documentaçao em JSON basta adicionar `-json` no fim do link: http://
 
 Para ver a documentaçao em YML basta adicionar `-yaml` no fim do link: http://localhost:5555/v1/docs-yaml
 </details>
+
+#### Docker
+<details><summary><b>Mostrar instruções</b></summary>
+
+Para rodar a aplicaçao instale o Docker em sua máquina e utilize o comando `docker-compose up -d` para rodar em modo detached.
+
+O Docker sobe os containers do NodeJS usando o NestJS como framework dependendo do serviço **db** que tem a imagem do MySQL para testarmos o funcionamento da API com a integraçao ao banco de dados.
+
+As variavéis de ambientes do MySQL se encontram no arquivo **docker-compose.yml**
+</details>
+
+ ---
+> **Warning**
+> O Docker não está instalando o swagger, estamos seguindo para entender o motivo disso, então ele inicia os containers com o MySQL mas nao termina a instalaçao da API e suas dependências.
