@@ -7,7 +7,6 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user/entities/user.entity';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -23,7 +22,6 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
         username: config.get('VDT_DB_USER'),
         password: config.get('VDT_DB_PASSWORD'),
         migrations: ['dist/migrations/*.{ts,js}'],
-        entities: [User],
         logger: 'file',
         synchronize: true, // never use TRUE in production!
         autoLoadEntities: true,
