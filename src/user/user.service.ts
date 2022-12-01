@@ -32,7 +32,6 @@ export class UserService {
 
     return {
       ...user,
-      password: undefined,
     };
   }
 }
