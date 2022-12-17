@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { setupSwagger } from './docs/swagger.config';
-// import { basicAuth } from './auth/basic.auth';
 import { ValidationPipe } from '@nestjs/common';
 
 (async function bootstrap() {
@@ -21,8 +20,6 @@ import { ValidationPipe } from '@nestjs/common';
   );
 
   setupSwagger(app);
-
-  // app.use(basicAuth);
 
   await app.listen(5555);
 })();

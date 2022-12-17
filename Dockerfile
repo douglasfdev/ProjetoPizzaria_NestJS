@@ -4,7 +4,7 @@ RUN apk add --no-cache bash
 
 WORKDIR /home/node/app
 
-COPY ["package.json", "package-lock.json", "./"]
+COPY ./package.json ./yarn.lock /home/node/app/
 
 RUN npm install -g @nestjs/cli
 
