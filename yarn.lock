@@ -783,6 +783,11 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
+"@prisma/engines@4.11.0":
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.11.0.tgz#c99749bfe20f58e8f4d2b5e04fee0785eba440e1"
+  integrity sha512-0AEBi2HXGV02cf6ASsBPhfsVIbVSDC9nbQed4iiY5eHttW9ZtMxHThuKZE1pnESbr8HRdgmFSa/Kn4OSNYuibg==
+
 "@sinclair/typebox@^0.25.16":
   version "0.25.24"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.25.24.tgz#8c7688559979f7079aacaf31aa881c3aa410b718"
@@ -3761,6 +3766,11 @@ pluralize@8.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
+postgres@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/postgres/-/postgres-3.3.3.tgz#f7a394c2edbcfd8ade96921676dccd0d45a1a757"
+  integrity sha512-FGLZOpZSXePRIQu6LJpJUDikzuhplWI80uyyfmKBiljpfO+Z4nuClwpq3/dsRnitxVDsgFN5duJ7eUTaC0meQQ==
+
 prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
@@ -3786,6 +3796,13 @@ pretty-format@^29.0.0, pretty-format@^29.4.3:
     "@jest/schemas" "^29.4.3"
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
+
+prisma@^4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.11.0.tgz#9695ba4129a43eab3e76b5f7a033c6c020377725"
+  integrity sha512-4zZmBXssPUEiX+GeL0MUq/Yyie4ltiKmGu7jCJFnYMamNrrulTBc+D+QwAQSJ01tyzeGHlD13kOnqPwRipnlNw==
+  dependencies:
+    "@prisma/engines" "4.11.0"
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
