@@ -1,13 +1,26 @@
 version: '3'
 
 services:
+  # app:
+  #   container_name: app-pizzaria
+  #   build: .
+  #   command: chmod +x .docker/entrypoint.sh
+  #   ports:
+  #     - "5555:5555"
+  #   restart: always
+  #   volumes:
+  #     - .:/home/node/app
+  #   depends_on:
+  #     - db
   db:
-    container_name: db-pizzaria
-    image: postgres
+    container_name: db-prisma-postgres
+    build: .docker/postgres
     tty: true
-    ports:
-    - '54322:5432'
     restart: always
+    ports:
+      - '54322:5432'
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=p4ss0rd
       - POSTGRES_USER=pizzaadmin
