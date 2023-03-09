@@ -4,7 +4,6 @@ services:
   # app:
   #   container_name: app-pizzaria
   #   build: .
-  #   command: chmod +x .docker/entrypoint.sh
   #   ports:
   #     - "5555:5555"
   #   restart: always
