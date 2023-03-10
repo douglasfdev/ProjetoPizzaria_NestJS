@@ -1,13 +1,13 @@
 -- CreateTable
-CREATE TABLE "tb_sers" (
-    "id" TEXT NOT NULL,
+CREATE TABLE "tb_users" (
+    "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "tb_sers_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "tb_users_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -60,7 +60,7 @@ CREATE TABLE "tb_item" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "tb_sers_email_key" ON "tb_sers"("email");
+CREATE UNIQUE INDEX "tb_users_email_key" ON "tb_users"("email");
 
 -- AddForeignKey
 ALTER TABLE "tb_products" ADD CONSTRAINT "tb_products_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "tb_categories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

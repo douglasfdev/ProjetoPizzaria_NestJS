@@ -16,15 +16,15 @@ export class UsersService {
     return this.userRepository.findAll();
   }
 
-  async findOne(id: string): Promise<UserEntity> {
+  async findOne(id: number): Promise<UserEntity> {
     return this.userRepository.findOne(id);
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto): Promise<UserEntity> {
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<UserEntity> {
     return this.userRepository.update(id, updateUserDto);
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     return this.userRepository.remove(id);
   }
 }

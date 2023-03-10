@@ -8,9 +8,6 @@ import {
 
 export class CreateUserDto {
   @IsString()
-  id: string;
-
-  @IsString()
   @IsNotEmpty()
   name: string;
 
@@ -20,17 +17,17 @@ export class CreateUserDto {
 
   @IsString()
   @IsNotEmpty()
-  @IsStrongPassword({
-    minLength: 6,
-    minUppercase: 1,
-    minSymbols: 1,
-    minNumbers: 1,
-  })
+  @IsStrongPassword(
+    {
+      minLength: 6,
+      minUppercase: 1,
+      minSymbols: 1,
+      minNumbers: 1,
+    },
+    {
+      message:
+        'Senha tem que ter mais que 6 caracteres, pelo menos uma letra maiúscula, pelo menos um caractere especial e pelo menos um número',
+    },
+  )
   password: string;
-
-  @IsDate()
-  created_at: Date;
-
-  @IsDate()
-  updated_at: Date;
 }
