@@ -26,7 +26,7 @@ Essa aplicação é feita para **Serviços de Chamar Taxi** em **NestJS**.
 
 ### 2- Instalar todas as dependências
 
-Na pasta do projeto, rodar o comando `npm i` ou `yarn` para instalar todas as dependências.
+Na pasta do projeto, rodar o comando `npm i` para instalar todas as dependências.
 
 <details><summary><b>Mostrar instruções</b></summary>
 
@@ -71,7 +71,7 @@ Para rodar a aplicaçao instale o Docker em sua máquina e utilize o comando `do
 
 O Docker sobe os containers do NodeJS usando o NestJS como framework dependendo do serviço **db** que tem a imagem do MySQL para testarmos o funcionamento da API com a integraçao ao banco de dados.
 
-As variavéis de ambientes do MySQL se encontram no arquivo **docker-compose.yml**
+As variavéis de ambientes do MySQL se encontram na pasta **src/common.envs**.
 </details>
 
 #### Rotas Usuário

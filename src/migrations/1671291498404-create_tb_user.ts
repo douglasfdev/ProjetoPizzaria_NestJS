@@ -1,4 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+  TableIndex,
+} from 'typeorm';
 
 export class createTbUser1670763480230 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -31,6 +37,24 @@ export class createTbUser1670763480230 implements MigrationInterface {
         ],
       }),
       true,
+    );
+
+    await queryRunner.createIndex(
+      'tb_user',
+      new TableIndex({
+        name: 'USER_NAME',
+        columnNames: ['name'],
+      }),
+    );
+
+    await queryRunner.createForeignKey(
+      'tb_user',
+      new TableForeignKey({
+        columnNames: ['id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'id',
+        onDelete: 'CASCADE',
+      }),
     );
 
     queryRunner.clearSqlMemory();

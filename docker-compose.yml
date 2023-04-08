@@ -8,7 +8,6 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - .:/home/node/app
-      - .:/home/node/app/node_modules
     command: npm run start:dev
     ports:
       - '5000:5000'
@@ -25,10 +24,7 @@ services:
     ports:
     - '3306:3306'
     restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=vdtch@m@d@taxista
-      - MYSQL_DATABASE=vdt_chamada_taxista
-      - MYSQL_USER=vdt_root
-      - MYSQL_PASSWORD=vdtch@m@d@taxista
+    env_file:
+      - src/common/envs/development.env
 volumes:
   db-data: {}

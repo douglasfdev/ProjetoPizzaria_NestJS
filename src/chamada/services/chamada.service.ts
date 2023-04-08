@@ -1,21 +1,16 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateChamadaDto } from '@dtos/create-chamada.dto';
 import { UpdateChamadaDto } from '@dtos/update-chamada.dto';
-import { HeadersConfig } from '@configs/headers.config';
-import { lastValueFrom } from 'rxjs';
-import { ConfigService } from '@nestjs/config';
+import { catchError, lastValueFrom } from 'rxjs';
+import { AxiosError } from 'axios';
 
 @Injectable()
 export class ChamadaService {
-  private readonly PRD_CHAMADA_URL = new ConfigService().get('PRD_CHAMADA_URL');
-  constructor(
-    private readonly headersConfig: HeadersConfig,
-    private readonly httpService: HttpService,
-  ) {}
+  constructor(private readonly httpService: HttpService) {}
 
   // Cria chamada da corrida
-  async createCall(createChamadaDto: CreateChamadaDto) {
+  async createCall(createChamadaDto: CreateChamadaDto): Promise<string> {
     return 'This action adds a new chamada';
   }
 
@@ -24,13 +19,22 @@ export class ChamadaService {
   //   return 'This action add a new external config';
   // }
 
-  // Pega o status da corrida
-  async status() {
-    const url = this.PRD_CHAMADA_URL;
+  /**
+   *
+   * @returns status da corrida
+   * @param idChamada
+   */
+  async status(idChamada: number): Promise<CreateChamadaDto> {
+    const url = `v2/chamada/${idChamada}`;
+
     const getChamada = await lastValueFrom(
-      this.httpService.get(url, {
-        headers: this.headersConfig.getHeaders(),
-      }),
+      this.httpService.get(url).pipe(
+        catchError((error: AxiosError) => {
+          const error_data = error.response?.data;
+          const { status }: { status?: number } = error;
+          throw new HttpException(error_data, status);
+        }),
+      ),
     );
 
     return getChamada.data;

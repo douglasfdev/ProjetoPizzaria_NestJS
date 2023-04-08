@@ -12,7 +12,7 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.MYSQL_DATABASE,
   username: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
-  migrations: ['dist/database/migrations/*.js'],
+  migrations: [__dirname + '/migrations/*{.js,.ts}'],
   entities: ['dist/**/*.entity.js'],
 };
 

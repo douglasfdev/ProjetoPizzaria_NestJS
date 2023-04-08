@@ -4,11 +4,12 @@ RUN apk add --no-cache bash
 
 WORKDIR /home/node/app
 
-COPY ./package.json ./yarn.lock /home/node/app/
+COPY ./package.json /home/node/app/
 
-RUN npm install -g @nestjs/cli
+RUN npm i -g @nestjs/cli && \
+    npm i @nestjs/swagger
 
-RUN npm install --silent
+RUN npm i --silent
 
 COPY . .
 

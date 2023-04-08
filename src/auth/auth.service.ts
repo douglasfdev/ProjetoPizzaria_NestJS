@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { compare } from 'bcrypt';
 import { UnauthorizedError } from './errors/unauthorized.error';
 import { User } from '../user/entities/user.entity';
 import { UserService } from '../user/user.service';
 import { UserPayload } from './models/UserPayload';
 import { UserToken } from './models/UserToken';
+import { comparePassword } from 'src/common/utils/crypto.util';
 
 @Injectable()
 export class AuthService {
@@ -30,7 +30,7 @@ export class AuthService {
     const user = await this.userService.findByEmail(email);
 
     if (user) {
-      const isPasswordValid = await compare(password, user.password);
+      const isPasswordValid = comparePassword(user, password);
 
       if (isPasswordValid) {
         return {

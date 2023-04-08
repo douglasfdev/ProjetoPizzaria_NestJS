@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { hash } from 'bcrypt';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
+import { hashPassword } from '../common/utils/crypto.util';
 
 @Injectable()
 export class UserService {
@@ -13,9 +13,10 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    hashPassword(createUserDto, createUserDto.password);
+
     const user = {
       ...createUserDto,
-      password: await hash(createUserDto.password, 10),
     };
 
     const createdUser = this.repository.create(user);
@@ -27,7 +28,7 @@ export class UserService {
   }
 
   async findByEmail(email: string): Promise<User> {
-    const user = await this.repository.findOne({ where: { email } });
+    const user = await this.repository.findOneBy({ email });
 
     if (!user) throw new NotFoundException('Usuário nao encontrado');
 

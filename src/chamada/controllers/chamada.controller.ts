@@ -34,19 +34,19 @@ export class ChamadaController {
   //   return this.chamadaService.externalConfig(createExternalConfigDto);
   // }
 
-  @Get('status')
-  public status() {
-    return this.chamadaService.status();
+  @Get('status/:id')
+  public status(@Param('id') idChamada: number) {
+    return this.chamadaService.status(idChamada);
   }
 
   @Get('chamada/:idChamada')
-  public statusCallById(@Param('id') id: string) {
-    return this.chamadaService.statusCallById(+id);
+  public statusCallById(@Param('id') id: number) {
+    return this.chamadaService.statusCallById(id);
   }
 
   @Get('reference/:idReference')
-  public referenceById(@Param('id') id: string) {
-    return this.chamadaService.referenceById(+id);
+  public referenceById(@Param('id') id: number) {
+    return this.chamadaService.referenceById(id);
   }
 
   @Patch('chamada/:id')
@@ -58,7 +58,7 @@ export class ChamadaController {
   }
 
   @Delete(':id')
-  public remove(@Param('id') id: string) {
-    return this.chamadaService.remove(+id);
+  public remove(@Param('id') id: number) {
+    return this.chamadaService.remove(id);
   }
 }
