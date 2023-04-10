@@ -9,6 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from '../database/data-source';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
+import { OrderModule } from './order/order.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -20,6 +21,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
     AuthModule,
     CategoriesModule,
     ProductsModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [
