@@ -10,6 +10,7 @@ import { dataSourceOptions } from '../database/data-source';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
 import { OrderModule } from './order/order.module';
+import { ItemModule } from './item/item.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -22,6 +23,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
     CategoriesModule,
     ProductsModule,
     OrderModule,
+    ItemModule,
   ],
   controllers: [],
   providers: [

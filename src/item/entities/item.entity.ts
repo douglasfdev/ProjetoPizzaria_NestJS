@@ -6,22 +6,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
-export class Order {
+@Entity('tb_item')
+export class Item {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  table: number;
-
-  @Column()
-  status: boolean;
-
-  @Column()
-  draft: boolean;
-
-  @Column()
-  name: string;
+  amount: number;
 
   @CreateDateColumn({
     type: 'timestamp',
