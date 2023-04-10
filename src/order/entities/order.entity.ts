@@ -1,7 +1,9 @@
+import { Item } from 'src/item/entities/item.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -35,4 +37,7 @@ export class Order {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   updated_at: Date;
+
+  @ManyToOne(() => Item, (items) => items.order_id)
+  item: Array<Item>;
 }

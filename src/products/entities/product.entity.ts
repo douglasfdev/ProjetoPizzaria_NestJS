@@ -1,4 +1,5 @@
 import { Category } from 'src/categories/entities/category.entity';
+import { Item } from 'src/item/entities/item.entity';
 import {
   CreateDateColumn,
   Entity,
@@ -35,4 +36,7 @@ export class Product {
 
   @ManyToOne(() => Category, (categories) => categories.products)
   category_id: Category;
+
+  @ManyToOne(() => Item, (items) => items.product_id)
+  items_id: Array<Item>;
 }
