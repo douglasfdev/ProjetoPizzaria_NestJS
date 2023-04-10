@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from '../database/data-source';
+import { CategoriesModule } from './categories/categories.module';
+import { ProductsModule } from './products/products.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -16,6 +18,8 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
     ConfigModule.forRoot({ envFilePath, isGlobal: true, cache: true }),
     UserModule,
     AuthModule,
+    CategoriesModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [
