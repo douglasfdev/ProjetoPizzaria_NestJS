@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { setupSwagger } from './docs/swagger.config';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import { config } from 'dotenv';
 import { getEnvPath } from '@helpers/env.helper';
 
@@ -12,6 +12,10 @@ config({ path: envFilePath });
 (async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger();
+
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
 
   app.enableCors();
 

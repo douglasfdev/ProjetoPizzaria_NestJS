@@ -1,6 +1,7 @@
 import { Category } from 'src/categories/entities/category.entity';
 import { Item } from 'src/item/entities/item.entity';
 import {
+  Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
@@ -13,12 +14,16 @@ export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
   name: string;
 
+  @Column()
   price: string;
 
+  @Column()
   description: string;
 
+  @Column()
   banner: string;
 
   @CreateDateColumn({
@@ -35,8 +40,8 @@ export class Product {
   updated_at: Date;
 
   @ManyToOne(() => Category, (categories) => categories.products)
-  category_id: Category;
+  category: Category;
 
   @ManyToOne(() => Item, (items) => items.product_id)
-  items_id: Array<Item>;
+  items: Array<Item>;
 }

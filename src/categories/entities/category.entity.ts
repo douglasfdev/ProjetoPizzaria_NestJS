@@ -29,6 +29,6 @@ export class Category {
   })
   updated_at: Date;
 
-  @OneToMany(() => Product, (products) => products.category_id)
+  @OneToMany(() => Product, (products) => products.category)
   products: Array<Product>;
 }

@@ -4,7 +4,10 @@ import { CreateUserDto } from '../dto/create-user.dto';
 import { UserService } from '../services/user.service';
 
 @IsPublic()
-@Controller('v1/user')
+@Controller({
+  path: 'user',
+  version: '1',
+})
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
