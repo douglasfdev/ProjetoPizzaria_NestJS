@@ -11,7 +11,3 @@ RUN npm i -g @nestjs/cli
 RUN npm i --silent
 
 COPY . .
-
-EXPOSE 5555
-
-CMD ["npm", "run", "start:dev"]

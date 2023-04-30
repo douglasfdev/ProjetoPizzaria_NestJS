@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    container_name: api_pizzaria
+    container_name: api-pizzaria
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -18,15 +18,13 @@ services:
       - db
 
   db:
-    container_name: db-pizzaria
+    container_name: pizzaria-db
     image: postgres
-    tty: true
     ports:
-    - '5432:5432'
+      - "5432:5432"
+    tty: true
     restart: always
-    environment:
-      - POSTGRES_DB=pizzaria
-      - POSTGRES_PASSWORD=pizzaria
-      - POSTGRES_USER=userroot
+    env_file:
+      - src/common/envs/development.env
 volumes:
   db-data: {}
