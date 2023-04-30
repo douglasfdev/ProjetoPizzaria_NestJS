@@ -1,10 +1,15 @@
-# API VDT Hub B2B
+# API Pizzaria
 
-<img src="https://user-images.githubusercontent.com/88008381/202720901-3f57e2e3-31ba-4542-a56b-7bea7d64c0f6.png"
-     align="right" alt="Size Limit logo by Vá de Táxi" width="225" height="129">
+**Pizzaria** é uma API que tem como objetivo, uma gestão interna de produtos de pizzarias, desde a criação de produtos até as ordens de serviços, com intuito de solicitar demandas de pedidos para clientes.
+Api contempla toda gestão interna como:
 
-**VDT Hub B2B** é uma API que tem como objetivo, integraçoes de empresas, fornecer os serviços Vá de Taxi para chamadas de taxistas, e interagir com o banco de dados sobre tudo relacionado a chamada de taxistas.
-Essa aplicação é feita para **Serviços de Chamar Taxi** em **NestJS**.
+* Cadastro de usuários
+* Cadastro de valor do Item
+* Ordens de pedidos
+* Cadastro de Produtos
+* E suas categorias
+
+> Essa aplicação é feita para **Serviços de Pizzaria** em **NestJS**.
 
  * A api é construida através do framework **NestJS** que tem diversas dependencias para garantir a soluçao do serviço.
  * A API está em construção
@@ -69,7 +74,7 @@ Para ver a documentaçao em YML basta adicionar `-yaml` no fim do link: http://l
 
 Para rodar a aplicaçao instale o Docker em sua máquina e utilize o comando `docker-compose up -d` para rodar em modo detached.
 
-O Docker sobe os containers do NodeJS usando o NestJS como framework dependendo do serviço **db** que tem a imagem do MySQL para testarmos o funcionamento da API com a integraçao ao banco de dados.
+O Docker sobe os containers do NodeJS usando o NestJS como framework dependendo do serviço **db** que tem a imagem do Postgres para testarmos o funcionamento da API com a integraçao ao banco de dados.
 
 As variavéis de ambientes do MySQL se encontram na pasta **src/common.envs**.
 </details>
@@ -99,4 +104,4 @@ GET localhost:5555/v1/user/${email}
 
  ---
 > **Warning**
-> O Docker não está instalando o swagger, estamos seguindo para entender o motivo disso, então ele inicia os containers com o MySQL mas nao termina a instalaçao da API e suas dependências.
+> O Docker não está instalando o swagger, pois ele está com um plugin na cli do nest que o Docker não está reconhecendo, API será refatorada para contemplar o swagger no projeto.
