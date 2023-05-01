@@ -1,6 +1,7 @@
 import { IsNumber } from 'class-validator';
+import { Item } from '../entities/item.entity';
 
-export class CreateItemDto {
+export class CreateItemDto extends Item {
   @IsNumber()
   amout: number;
 }

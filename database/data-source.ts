@@ -13,8 +13,12 @@ export const dataSourceOptions = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   migrations: [__dirname + '/migrations/*{.js,.ts}'],
-  entities: ['dist/**/*.entity{.js,.ts}'],
-  synchronize: true, //never use true on production,
+  entities: [__dirname + '/**/*.entity{.js,.ts}'],
+  cli: {
+    migrationsDir: 'src/migrations/*{.js,.ts}',
+  },
+  synchronize: false, //never use true on production,
+  migrationsRun: true,
   autoLoadEntites: true,
 } as DataSourceOptions;
 

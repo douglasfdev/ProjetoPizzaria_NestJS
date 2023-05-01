@@ -10,7 +10,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "NODE_ENV=development nest start --watch",
+    "start:dev": "cross-env NODE_ENV=development nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "NODE_ENV=production node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -21,10 +21,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "npm run build && npx typeorm -d dist/database/data-source.js",
     "migration:create": "npm run typeorm && npx typeorm migration:create src/migrations -n",
-    "migration:generate": "npm run typeorm -- migration:generate -d src/migrations -n",
+    "migration:generate": "npm run typeorm -- migration:generate",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
-    "typeorm:sync": "typeorm schema:sync -d dist/database/data-source.js"
+    "typeorm:sync": "typeorm schema:sync -d dist/database/data-source.js",
+    "generate:models": "dotenv -- npx typeorm-model-generator -h localhost -d pizzaria -u admin -x 123456 -e postgres -o ."
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.0",
@@ -41,7 +42,9 @@
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
+    "dotenv-cli": "^7.2.1",
     "helmet": "^6.0.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
@@ -50,7 +53,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.3.13"
+    "typeorm": "^0.3.13",
+    "typeorm-model-generator": "^0.4.6"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
