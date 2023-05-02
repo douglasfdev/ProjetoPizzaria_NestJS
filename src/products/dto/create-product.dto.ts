@@ -10,6 +10,5 @@ export class CreateProductDto {
   @IsString()
   description: string;
 
-  @IsString()
   banner: string;
 }
