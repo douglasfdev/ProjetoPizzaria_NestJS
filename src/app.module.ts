@@ -22,9 +22,10 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       username: 'admin',
       password: '123456',
       database: 'pizzaria',
-      synchronize: true,
-      entities: [],
+      entities: [__dirname + '/../**/*.entity{.js,.ts'],
+      migrations: [__dirname + '/../**/migraitons/*{.js,.ts'],
       autoLoadEntities: true,
+      migrationsRun: true,
     }),
     ConfigModule.forRoot({
       envFilePath,
