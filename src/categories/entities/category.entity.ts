@@ -10,8 +10,8 @@ import {
 
 @Entity('tb_categories')
 export class Category {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   name: string;

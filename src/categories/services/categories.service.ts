@@ -15,14 +15,7 @@ export class CategoriesService {
   ) {}
 
   async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
-    const products = await Promise.all(
-      createCategoryDto.products.map((name) => this.preloadProductByName(name)),
-    );
-
-    const category = this.categoryRepo.create({
-      ...createCategoryDto,
-      products,
-    });
+    const category = this.categoryRepo.create({ ...createCategoryDto });
 
     return this.categoryRepo.save(category);
   }
