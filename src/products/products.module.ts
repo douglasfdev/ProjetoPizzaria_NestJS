@@ -4,7 +4,6 @@ import { ProductsController } from './controllers/products.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { MulterModule } from '@nestjs/platform-express';
-import { CategoriesModule } from 'src/categories/categories.module';
 import { Category } from 'src/categories/entities/category.entity';
 
 @Module({
