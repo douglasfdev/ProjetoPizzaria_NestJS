@@ -17,7 +17,13 @@ export class CategoriesService {
   async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
     const category = this.categoryRepo.create({ ...createCategoryDto });
 
-    return this.categoryRepo.save(category);
+    await this.categoryRepo.save({ ...category });
+
+    return {
+      ...category,
+      created_at: undefined,
+      updated_at: undefined,
+    };
   }
 
   async preloadProductByName(name: string): Promise<Product> {
@@ -27,6 +33,19 @@ export class CategoriesService {
       return this.productRepo.create({ name });
     }
 
-    return { ...product };
+    return {
+      ...product,
+      created_at: undefined,
+      updated_at: undefined,
+    };
+  }
+
+  /**
+   * Find all Categories
+   * @param {string} uuid - Category responsible of the product.
+   * @returns The Category responsible of the Product
+   */
+  async allCategories(): Promise<Array<Category>> {
+    return this.categoryRepo.find();
   }
 }

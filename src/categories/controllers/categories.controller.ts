@@ -1,6 +1,7 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { CategoriesService } from '../services/categories.service';
 import { CreateCategoryDto } from '../dto/create-category.dto';
+import { Category } from '../entities/category.entity';
 
 @Controller({
   path: 'category',
@@ -10,7 +11,14 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Post()
-  create(@Body() createCategoryDto: CreateCategoryDto) {
+  async create(
+    @Body() createCategoryDto: CreateCategoryDto,
+  ): Promise<Category> {
     return this.categoriesService.create(createCategoryDto);
+  }
+
+  @Get()
+  async allCategories(): Promise<Array<Category>> {
+    return this.categoriesService.allCategories();
   }
 }
