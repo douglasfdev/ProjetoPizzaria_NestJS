@@ -16,7 +16,8 @@
       "@services/*": ["src/chamada/services/*"],
       "@entities/*": ["src/chamada/entities/*"],
       "@controllers/*": ["src/chamada/controllers/*"],
-      "@helpers/*": ["src/common/helpers/*"]
+      "@helpers/*": ["src/common/helpers/*"],
+      "@utils/*": ["src/common/utils/*"],
     },
     "incremental": true,
     "skipLibCheck": true,
