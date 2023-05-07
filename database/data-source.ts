@@ -1,4 +1,4 @@
-import { getEnvPath } from '@helpers/env.helper';
+import { getEnvPath } from '../src/common/helpers/env.helper';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { config } from 'dotenv';
 
@@ -12,7 +12,7 @@ export const dataSourceOptions = {
   database: process.env.POSTGRES_DB,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
-  migrations: [__dirname + '/migrations/*{.js,.ts}'],
+  migrations: ['src/migrations/*{.js,.ts}'],
   entities: [__dirname + '/**/*.entity{.js,.ts}'],
   cli: {
     migrationsDir: 'src/migrations/*{.js,.ts}',

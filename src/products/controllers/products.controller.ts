@@ -7,7 +7,6 @@ import {
   Get,
   Res,
   Param,
-  Query,
 } from '@nestjs/common';
 import { ProductsService } from '../services/products.service';
 import { CreateProductDto } from '../dto/create-product.dto';
@@ -52,14 +51,14 @@ export class ProductsController {
     });
   }
 
-  @Get(':imgPath')
+  @Get('image/:imgPath')
   async seeUploadFiles(@Param('imgPath') image, @Res() res) {
     return res.sendFile(image, { root: __dirname + '/../../tmp' });
   }
 
-  @Get('/categories')
+  @Get(':id/categories')
   async productsByCategory(
-    @Query('id') categoryId: string,
+    @Param('id') categoryId: string,
   ): Promise<Array<Product>> {
     return this.productsService.productsByCategory(categoryId);
   }

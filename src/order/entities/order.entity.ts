@@ -12,7 +12,7 @@ import {
 @Entity('tb_order')
 export class Order {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
   table: number;

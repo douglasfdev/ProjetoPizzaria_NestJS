@@ -23,7 +23,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       password: '123456',
       database: 'pizzaria',
       entities: [__dirname + '/../**/*.entity{.js,.ts'],
-      migrations: [__dirname + '/../**/migraitons/*{.js,.ts'],
+      migrations: ['src/**/migraitons/*{.js,.ts'],
       synchronize: true,
       autoLoadEntities: true,
       migrationsRun: true,

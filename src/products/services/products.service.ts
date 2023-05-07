@@ -54,7 +54,7 @@ export class ProductsService {
     const categoryId = await this.category.findOneBy({ id: uuid });
 
     if (!categoryId) {
-      throw new BadRequestException(`categy id: ${uuid} doesn't exists`);
+      throw new BadRequestException(`category id: ${uuid} doesn't exists`);
     }
 
     return { ...categoryId };
