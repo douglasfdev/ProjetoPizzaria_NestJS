@@ -4,15 +4,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('tb_item')
 export class Item {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   amount: number;
@@ -30,9 +30,9 @@ export class Item {
   })
   updated_at: Date;
 
-  @OneToMany(() => Order, (orders) => orders.id)
+  @OneToOne(() => Order, (orders) => orders.id)
   order_id: Order;
 
-  @OneToMany(() => Product, (products) => products.id)
+  @OneToOne(() => Product, (products) => products.id)
   product_id: Product;
 }

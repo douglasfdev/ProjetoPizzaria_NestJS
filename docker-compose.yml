@@ -2,29 +2,30 @@ version: '3'
 
 services:
   app:
-    container_name: api-pizzaria
+    container_name: pizzaria-api
     build:
       context: .
       dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
     volumes:
       - .:/home/node/app
-    command: npm run start:dev
-    ports:
-      - '5000:5000'
-    restart: always
-    env_file:
-      - ./src/common/envs/development.env
     depends_on:
       - db
 
   db:
     container_name: pizzaria-db
+    build: .docker/postgres
     image: postgres
     ports:
       - "5432:5432"
     tty: true
     restart: always
-    env_file:
-      - src/common/envs/development.env
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=pizzaria
+      - POSTGRES_PASSWORD=123456
 volumes:
   db-data: {}

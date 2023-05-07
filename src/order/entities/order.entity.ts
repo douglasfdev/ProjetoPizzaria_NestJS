@@ -1,3 +1,4 @@
+import { OrderEnumType } from 'src/enum/OrderEnum';
 import { Item } from 'src/item/entities/item.entity';
 import {
   Column,
@@ -8,22 +9,22 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('tb_order')
 export class Order {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
   @Column()
   table: number;
 
-  @Column()
-  status: boolean;
+  @Column({ type: 'enum', enum: OrderEnumType, default: OrderEnumType.PENDING })
+  status: number;
 
-  @Column()
+  @Column({ default: true })
   draft: boolean;
 
-  @Column()
-  name: string;
+  @Column({ nullable: true })
+  name?: string;
 
   @CreateDateColumn({
     type: 'timestamp',

@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Delete, Param, Patch } from '@nestjs/common';
 import { OrderService } from '../services/order.service';
 import { CreateOrderDto } from '../dto/create-order.dto';
 
@@ -10,7 +10,18 @@ export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Post()
-  create(@Body() createOrderDto: CreateOrderDto) {
+  createOrder(@Body() createOrderDto: CreateOrderDto) {
     return this.orderService.create(createOrderDto);
+  }
+
+  @Patch(':id')
+  updateOrder(@Param() id: string, @Body() createOrderDto: CreateOrderDto) {
+    return this.orderService.updateOrder(id, createOrderDto);
+  }
+
+  @Delete(':id')
+  async deleteOrder(@Param() id: string) {
+    await this.orderService.removeOrder(id);
+    return { message: 'Ordem de serviço fechada com sucesso' };
   }
 }

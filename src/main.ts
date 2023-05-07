@@ -5,7 +5,7 @@ import { setupSwagger } from './docs/swagger.config';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { config } from 'dotenv';
 import { getEnvPath } from '@helpers/env.helper';
-import log from '@utils/nodeEnv.util';
+import log from 'src/common/utils/nodeEnv.util';
 
 const envFilePath = getEnvPath(`${__dirname}/../common/envs`);
 config({ path: envFilePath });
@@ -31,7 +31,7 @@ config({ path: envFilePath });
 
   setupSwagger(app);
 
-  await app.listen(process.env.PORT || 5555, () => {
+  await app.listen(5555, () => {
     log();
   });
 })();

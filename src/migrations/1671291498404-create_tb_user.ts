@@ -42,8 +42,8 @@ export class createTbUser1670763480230 implements MigrationInterface {
     await queryRunner.createIndex(
       'tb_user',
       new TableIndex({
-        name: 'USER_NAME',
-        columnNames: ['name'],
+        name: 'idx_tb_user_id',
+        columnNames: ['id'],
       }),
     );
 
@@ -52,7 +52,7 @@ export class createTbUser1670763480230 implements MigrationInterface {
       new TableForeignKey({
         columnNames: ['id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'id',
+        referencedTableName: 'tb_user',
         onDelete: 'CASCADE',
       }),
     );

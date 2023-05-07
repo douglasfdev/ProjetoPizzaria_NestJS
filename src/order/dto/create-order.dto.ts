@@ -1,15 +1,18 @@
-import { IsBoolean, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateOrderDto {
   @IsNumber()
   table: number;
 
-  @IsBoolean()
-  status: boolean;
+  @IsNumber()
+  @IsOptional()
+  status: number;
 
   @IsBoolean()
+  @IsOptional()
   draft: boolean;
 
   @IsString()
-  name: string;
+  @IsOptional()
+  name?: string;
 }
