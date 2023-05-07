@@ -10,29 +10,18 @@ import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
 import { OrderModule } from './order/order.module';
 import { ItemModule } from './item/item.module';
+import { typeOrmAsyncConfig } from '@configs/typeorm.config';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'admin',
-      password: '123456',
-      database: 'pizzaria',
-      entities: [__dirname + '/../**/*.entity{.js,.ts'],
-      migrations: ['src/**/migraitons/*{.js,.ts'],
-      synchronize: true,
-      autoLoadEntities: true,
-      migrationsRun: true,
-    }),
     ConfigModule.forRoot({
       envFilePath,
       isGlobal: true,
       cache: true,
     }),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     UserModule,
     AuthModule,
     CategoriesModule,

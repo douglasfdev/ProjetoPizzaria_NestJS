@@ -6,8 +6,12 @@ WORKDIR /home/node/app
 
 COPY ./package.json /home/node/app/
 
+EXPOSE 5000
+
 RUN npm i -g @nestjs/cli
 
 RUN npm i --silent
 
 COPY . .
+
+CMD [ "npm", "run", "start:dev" ]
