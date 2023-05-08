@@ -1,3 +1,4 @@
+import { ItemEnumType } from 'src/enum/ItemEnum';
 import { Order } from 'src/order/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
 import {
@@ -16,6 +17,9 @@ export class Item {
 
   @Column()
   amount: number;
+
+  @Column({ type: 'enum', enum: ItemEnumType, default: ItemEnumType.ADDED })
+  status: number;
 
   @CreateDateColumn({
     type: 'timestamp',

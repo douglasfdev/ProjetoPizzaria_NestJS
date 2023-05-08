@@ -8,7 +8,7 @@ config({ path: envFilePath });
 
 export const dataSourceOptions = {
   type: 'postgres',
-  host: process.env.DB_HOST,
+  host: 'localhost',
   port: Number(process.env.DB_PORT),
   database: process.env.POSTGRES_DB,
   username: process.env.POSTGRES_USER,

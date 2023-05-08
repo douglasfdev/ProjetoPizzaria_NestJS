@@ -5,6 +5,7 @@ import { Item } from '../entities/item.entity';
 import { Repository } from 'typeorm';
 import { Order } from 'src/order/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
+import { ItemEnumType } from 'src/enum/ItemEnum';
 
 @Injectable()
 export class ItemService {
@@ -31,16 +32,41 @@ export class ItemService {
       throw new BadRequestException('Product not found');
     }
 
-    const createdItem = await this.itemRepo.save({
-      amount: createItemDto.amount,
+    const createdItem = this.itemRepo.create({
+      ...createItemDto,
       order,
       products,
     });
 
+    const savedItem = await this.itemRepo.save(createdItem);
+
     return {
-      ...createdItem,
+      ...savedItem,
+      id: savedItem.id,
       created_at: undefined,
       updated_at: undefined,
     };
+  }
+
+  async removeItemsOrder(uuid: string) {
+    return this.itemRepo.update(uuid, {
+      status: ItemEnumType.REMOVED,
+    });
+  }
+
+  async finishItemOrder(id: string, createItemDto: CreateItemDto) {
+    const order = await this.orderRepo.findOneBy({ id: createItemDto.order });
+    const products = await this.productRepo.findOneBy({
+      id: createItemDto.products,
+    });
+    return this.itemRepo.update(id, {
+      status: createItemDto.status,
+      order,
+      products,
+    });
+  }
+
+  async itemOrderSandProducts(uuid: string) {
+    return this.itemRepo.findBy({ id: uuid });
   }
 }

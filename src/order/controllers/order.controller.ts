@@ -15,12 +15,12 @@ export class OrderController {
   }
 
   @Patch(':id')
-  updateOrder(@Param() id: string, @Body() createOrderDto: CreateOrderDto) {
+  updateOrder(@Param('id') id: string, @Body() createOrderDto: CreateOrderDto) {
     return this.orderService.updateOrder(id, createOrderDto);
   }
 
   @Delete(':id')
-  async deleteOrder(@Param() id: string) {
+  async deleteOrder(@Param('id') id: string) {
     await this.orderService.removeOrder(id);
     return { message: 'Ordem de serviço fechada com sucesso' };
   }
