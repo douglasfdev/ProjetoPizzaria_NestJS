@@ -25,15 +25,13 @@ export class ProductsService {
    * @returns The Product created
    */
   async create(createProductDto: CreateProductDto) {
-    const categoryId = await this.preloadCategoryById(
-      createProductDto.category,
-    );
+    const category = await this.preloadCategoryById(createProductDto.category);
 
     const createdProduct = this.product.create({
       ...createProductDto,
       category: {
-        id: categoryId.id,
-        name: categoryId.name,
+        id: category.id,
+        name: category.name,
       },
     });
 

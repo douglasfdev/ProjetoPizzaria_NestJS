@@ -17,10 +17,11 @@ export class CategoriesService {
   async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
     const category = this.categoryRepo.create({ ...createCategoryDto });
 
-    await this.categoryRepo.save({ ...category });
+    const createdCategory = await this.categoryRepo.save({ ...category });
 
     return {
-      ...category,
+      ...createdCategory,
+      id: createdCategory.id,
       created_at: undefined,
       updated_at: undefined,
     };

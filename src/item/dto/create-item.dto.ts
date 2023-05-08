@@ -1,13 +1,12 @@
 import { IsNumber, IsUUID } from 'class-validator';
-import { Item } from '../entities/item.entity';
 
-export class CreateItemDto extends Item {
+export class CreateItemDto {
   @IsNumber()
   amount: number;
 
   @IsUUID()
-  orderId: string;
+  order: string;
 
   @IsNumber()
-  productId: number;
+  products: number;
 }
