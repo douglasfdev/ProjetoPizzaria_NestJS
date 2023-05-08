@@ -31,7 +31,7 @@ config({ path: envFilePath });
 
   setupSwagger(app);
 
-  await app.listen(process.env.PORT || 5555, () => {
+  await app.listen(5555, () => {
     log();
   });
 })();

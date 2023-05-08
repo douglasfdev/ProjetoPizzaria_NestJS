@@ -43,4 +43,28 @@ export class ItemService {
       updated_at: undefined,
     };
   }
+
+  async itemOrderSandProducts(uuid: string) {
+    return this.itemRepo.findBy({ id: uuid });
+  }
+
+  async preloadOrderById(uuid: string) {
+    const orderId = this.order.findOneBy({ id: uuid });
+
+    if (!orderId) {
+      throw new BadRequestException(`Order service id: ${uuid} doesn't exists`);
+    }
+
+    return { ...orderId };
+  }
+
+  async preloadProductById(id: number) {
+    const product = this.product.findOneBy({ id });
+
+    if (!product) {
+      throw new BadRequestException(`Product id: ${id} doesn't exists`);
+    }
+
+    return { ...product };
+  }
 }
