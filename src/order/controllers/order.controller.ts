@@ -45,6 +45,6 @@ export class OrderController {
 
   @Get(':id/item')
   async listOrders(@Param('id') id: string) {
-    return this.orderService.listOrderByid(id);
+    return this.orderService.listOrderByItems(id);
   }
 }

@@ -68,7 +68,7 @@ export class OrderService {
     });
   }
 
-  async listOrderByid(id: string) {
+  async listOrderByItems(id: string) {
     return this.itemRepo.find({
       select: {
         id: true,
