@@ -13,13 +13,13 @@ export class OrderService {
   ) {}
 
   async create(createOrderDto: CreateOrderDto) {
-    const order = { ...createOrderDto };
+    const order = this.orderRepo.create({ ...createOrderDto });
 
-    const createdOrder = this.orderRepo.create(order);
-
-    await this.orderRepo.save(createdOrder);
+    const createdOrder = await this.orderRepo.save({ ...order });
     return {
-      ...createOrderDto,
+      ...createdOrder,
+      created_at: undefined,
+      updated_at: undefined,
     };
   }
 

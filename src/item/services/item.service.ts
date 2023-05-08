@@ -12,55 +12,35 @@ export class ItemService {
     @InjectRepository(Item)
     private readonly itemRepo: Repository<Item>,
     @InjectRepository(Order)
-    private readonly order: Repository<Order>,
+    private readonly orderRepo: Repository<Order>,
     @InjectRepository(Product)
-    private readonly product: Repository<Product>,
+    private readonly productRepo: Repository<Product>,
   ) {}
 
   async create(createItemDto: CreateItemDto) {
-    const orderId = await this.preloadOrderById(createItemDto.orderId);
-    const productId = await this.preloadProductById(createItemDto.productId);
-
-    const createdItem = this.itemRepo.create({
-      ...createItemDto,
-      order_id: {
-        id: orderId.id,
-        item: orderId.item,
-      },
-      product_id: {
-        id: productId.id,
-        items: productId.items,
-      },
+    const order = await this.orderRepo.findOneBy({ id: createItemDto.order });
+    const products = await this.productRepo.findOneBy({
+      id: createItemDto.products,
     });
 
-    await this.itemRepo.save(createdItem);
+    if (!order) {
+      throw new BadRequestException('Order not found');
+    }
+
+    if (!products) {
+      throw new BadRequestException('Product not found');
+    }
+
+    const createdItem = await this.itemRepo.save({
+      amount: createItemDto.amount,
+      order,
+      products,
+    });
 
     return {
       ...createdItem,
+      created_at: undefined,
+      updated_at: undefined,
     };
-  }
-
-  async itemOrderSandProducts(uuid: string) {
-    return this.itemRepo.findBy({ id: uuid });
-  }
-
-  async preloadOrderById(uuid: string) {
-    const orderId = this.order.findOneBy({ id: uuid });
-
-    if (!orderId) {
-      throw new BadRequestException(`Order service id: ${uuid} doesn't exists`);
-    }
-
-    return { ...orderId };
-  }
-
-  async preloadProductById(id: number) {
-    const product = this.product.findOneBy({ id });
-
-    if (!product) {
-      throw new BadRequestException(`Product id: ${id} doesn't exists`);
-    }
-
-    return { ...product };
   }
 }

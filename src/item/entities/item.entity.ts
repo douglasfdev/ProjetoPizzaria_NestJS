@@ -4,7 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -30,9 +30,9 @@ export class Item {
   })
   updated_at: Date;
 
-  @OneToOne(() => Order, (orders) => orders.id)
-  order_id: Order;
+  @ManyToOne(() => Order, (orders) => orders.items)
+  order: Order;
 
-  @OneToOne(() => Product, (products) => products.id)
-  product_id: Product;
+  @ManyToOne(() => Product, (products) => products.items)
+  products: Product;
 }

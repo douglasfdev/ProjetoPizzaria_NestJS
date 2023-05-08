@@ -4,7 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -39,6 +39,6 @@ export class Order {
   })
   updated_at: Date;
 
-  @ManyToOne(() => Item, (items) => items.order_id)
-  item: Array<Item>;
+  @ManyToMany(() => Item, (items) => items.order)
+  items: Array<Item>;
 }

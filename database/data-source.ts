@@ -8,11 +8,11 @@ config({ path: envFilePath });
 
 export const dataSourceOptions = {
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  database: 'pizzaria',
-  username: 'admin',
-  password: '123456',
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  database: process.env.POSTGRES_DB,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
   migrations: ['dist/**/migrations/*.js'],
   entities: ['dist/**/*.entity.js'],
   synchronize: true, //never use true on production,

@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -42,6 +43,6 @@ export class Product {
   @ManyToOne(() => Category, (categories) => categories.products)
   category: Category;
 
-  @ManyToOne(() => Item, (items) => items.product_id)
+  @OneToMany(() => Item, (items) => items.products)
   items: Array<Item>;
 }
