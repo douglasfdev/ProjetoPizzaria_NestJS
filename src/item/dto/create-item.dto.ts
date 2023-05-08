@@ -1,12 +1,17 @@
-import { IsNumber, IsUUID } from 'class-validator';
+import { IsNumber, IsOptional, IsUUID } from 'class-validator';
 
 export class CreateItemDto {
   @IsNumber()
+  @IsOptional()
   amount: number;
+
+  @IsNumber()
+  @IsOptional()
+  status: number;
 
   @IsUUID()
   order: string;
 
-  @IsNumber()
-  products: number;
+  @IsUUID()
+  products: string;
 }
