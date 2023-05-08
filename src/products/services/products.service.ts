@@ -65,6 +65,17 @@ export class ProductsService {
    */
   async productsByCategory(uuid: string) {
     return this.product.find({
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        description: true,
+        banner: true,
+        category: {
+          id: true,
+          name: true,
+        },
+      },
       where: {
         category: { id: uuid },
       },

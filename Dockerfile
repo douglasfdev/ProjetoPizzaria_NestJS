@@ -10,7 +10,7 @@ EXPOSE 5000
 
 RUN npm i -g @nestjs/cli
 
-RUN npm i --silent
+RUN npm i
 
 COPY . .
 

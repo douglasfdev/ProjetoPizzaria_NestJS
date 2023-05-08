@@ -17,7 +17,7 @@ export class Order {
   @Column()
   table: number;
 
-  @Column({ type: 'enum', enum: OrderEnumType, default: OrderEnumType.PENDING })
+  @Column({ type: 'enum', enum: OrderEnumType, default: OrderEnumType.OPENED })
   status: number;
 
   @Column({ default: true })
