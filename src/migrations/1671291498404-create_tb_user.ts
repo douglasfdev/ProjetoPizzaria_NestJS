@@ -23,6 +23,7 @@ export class createTbUser1670763480230 implements MigrationInterface {
             name: 'email',
             type: 'varchar',
             isNullable: false,
+            isUnique: true,
           },
           {
             name: 'password',
