@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedError } from './errors/unauthorized.error';
 import { User } from '../user/entities/user.entity';
-import { UserService } from '../user/services/user.service';
+import { UserService } from 'src/user/services/user.service';
 import { UserPayload } from './models/UserPayload';
 import { UserToken } from './models/UserToken';
 import { comparePassword } from 'src/common/utils/crypto.util';
+import { CreateUserDto } from 'src/user/dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -46,5 +47,13 @@ export class AuthService {
     throw new UnauthorizedError(
       'Email address or password provided is incorrect.',
     );
+  }
+
+  async getJwtToken(currentUser: CreateUserDto): Promise<string> {
+    const payload = {
+      ...currentUser,
+    };
+
+    return this.jwtService.signAsync(payload);
   }
 }
