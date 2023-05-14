@@ -55,10 +55,11 @@ export class AuthController {
     }
 
     const user = await this.authService.getUserByToken(token);
+
     return {
       id: user.sub,
       email: user.email,
-      anme: user.name,
+      name: user.name,
     };
   }
 }
