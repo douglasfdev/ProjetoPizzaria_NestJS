@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedError } from './errors/unauthorized.error';
 import { User } from '../user/entities/user.entity';
@@ -55,5 +55,15 @@ export class AuthService {
     };
 
     return this.jwtService.signAsync(payload);
+  }
+
+  async getUserByToken(token: string) {
+    try {
+      const decoded = this.jwtService.verify(token);
+
+      return decoded;
+    } catch (e) {
+      throw new BadRequestException(`Token inválido: ${token}. ${e.message}`);
+    }
   }
 }

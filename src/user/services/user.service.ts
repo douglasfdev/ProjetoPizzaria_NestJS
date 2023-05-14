@@ -41,8 +41,4 @@ export class UserService {
       ...user,
     };
   }
-
-  async findById(id: number): Promise<User> {
-    return this.repository.findOneBy({ id });
-  }
 }

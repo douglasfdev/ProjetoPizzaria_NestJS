@@ -1,10 +1,13 @@
 import {
   Controller,
+  Get,
+  Headers,
   HttpCode,
   HttpStatus,
   Post,
   Request,
   Res,
+  UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -24,7 +27,7 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  @HttpCode(HttpStatus.OK)
+  @HttpCode(HttpStatus.CREATED)
   async login(
     @Request() req: AuthRequest,
     @Res({ passthrough: true }) res: Response,
@@ -37,5 +40,25 @@ export class AuthController {
 
     res.cookie('auth-cookie', secret, { httpOnly: true });
     return this.authService.login(req.user);
+  }
+
+  @Get('me')
+  @HttpCode(HttpStatus.OK)
+  async getMe(@Headers('authorization') authHeader: string) {
+    if (!authHeader) {
+      throw new UnauthorizedException('Token não fornecido');
+    }
+    const [bearer, token] = authHeader.split(' ');
+
+    if (bearer !== 'Bearer' || !token) {
+      throw new UnauthorizedException('Token inválido');
+    }
+
+    const user = await this.authService.getUserByToken(token);
+    return {
+      id: user.sub,
+      email: user.email,
+      anme: user.name,
+    };
   }
 }
