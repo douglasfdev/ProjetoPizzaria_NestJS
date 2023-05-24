@@ -89,7 +89,7 @@ export class OrderService {
         },
       },
       where: {
-        id,
+        order: { id },
       },
       relations: ['order', 'products'],
     });
