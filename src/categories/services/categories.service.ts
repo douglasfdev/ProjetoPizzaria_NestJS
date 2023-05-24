@@ -43,8 +43,7 @@ export class CategoriesService {
 
   /**
    * Find all Categories
-   * @param {string} uuid - Category responsible of the product.
-   * @returns The Category responsible of the Product
+   * @returns Array of Categories, all categories
    */
   async allCategories(): Promise<Array<Category>> {
     return this.categoryRepo.find();
