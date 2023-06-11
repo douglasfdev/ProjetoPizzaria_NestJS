@@ -6,15 +6,20 @@ import {
   Param,
   Delete,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
 import { ItemService } from '../services/item.service';
 import { CreateItemDto } from '../dto/create-item.dto';
 import { Item } from '../entities/item.entity';
+import { RolesGuard } from 'src/roles/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
 
 @Controller({
   path: 'item',
   version: '1',
 })
+@UseGuards(RolesGuard)
+@Roles('Garcom', 'Administrador')
 export class ItemController {
   constructor(private readonly itemService: ItemService) {}
 

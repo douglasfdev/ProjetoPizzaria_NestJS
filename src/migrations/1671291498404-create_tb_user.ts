@@ -1,3 +1,4 @@
+import { UserRole } from 'src/enum/UserRole';
 import {
   MigrationInterface,
   QueryRunner,
@@ -22,6 +23,7 @@ export class createTbUser1670763480230 implements MigrationInterface {
           {
             name: 'email',
             type: 'varchar',
+            isUnique: true,
             isNullable: false,
           },
           {
@@ -32,6 +34,13 @@ export class createTbUser1670763480230 implements MigrationInterface {
           {
             name: 'name',
             type: 'varchar',
+            isNullable: false,
+          },
+          {
+            name: 'role',
+            type: 'enum',
+            enum: [UserRole.Administrador, UserRole.Garcom],
+            default: [UserRole.Administrador],
             isNullable: false,
           },
         ],

@@ -1,3 +1,4 @@
+import { UserRole } from 'src/enum/UserRole';
 import { User } from '../entities/user.entity';
 import {
   IsEmail,
@@ -10,7 +11,7 @@ import {
 
 export class CreateUserDto extends User {
   @IsEmail()
-  @IsNotEmpty({ message: 'email não pode ser vazio' })
+  @IsNotEmpty({ message: 'Email não pode ser vazio' })
   email: string;
 
   @IsString()
@@ -20,6 +21,7 @@ export class CreateUserDto extends User {
     message:
       'Senha requer pelo menos um caractere especial, um número e uma letra maiúscula',
   })
+  @IsNotEmpty({ message: 'Senha nao pode ser vazia' })
   password: string;
 
   @IsString({
@@ -28,5 +30,10 @@ export class CreateUserDto extends User {
   })
   @MinLength(4)
   @MaxLength(50)
+  @IsNotEmpty({ message: 'Nome nao pode ser vazio' })
   name: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'Role nao pode ser vazio' })
+  role: UserRole;
 }

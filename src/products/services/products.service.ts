@@ -16,12 +16,12 @@ export class ProductsService {
 
   /**
    * Create a Product
-   * @param {Object} createProductDTO - Product who owner wants to register.
-   * @param {string=} createProductDTO.name - The name of the Product
-   * @param {string} createProductDTO.price
-   * @param {string} createProductDTO.description
-   * @param {string} createProductDTO.banner
-   * @param {string} createProductDTO.category_id
+   * @param Object createProductDTO - Product who owner wants to register.
+   * @param string createProductDTO.name - The name of the Product
+   * @param string createProductDTO.price
+   * @param string createProductDTO.description
+   * @param string createProductDTO.banner
+   * @param string createProductDTO.category_id
    * @returns The Product created
    */
   async create(createProductDto: CreateProductDto) {
