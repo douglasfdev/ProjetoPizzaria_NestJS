@@ -11,6 +11,7 @@ import { ProductsModule } from './products/products.module';
 import { OrderModule } from './order/order.module';
 import { ItemModule } from './item/item.module';
 import { typeOrmAsyncConfig } from '@configs/typeorm.config';
+import { RolesGuard } from './roles/roles.guard';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -34,6 +35,10 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })
