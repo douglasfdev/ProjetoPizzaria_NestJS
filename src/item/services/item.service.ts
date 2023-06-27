@@ -39,7 +39,7 @@ export class ItemService {
       products,
     });
 
-    await this.orderRepo.update(order, {
+    await this.orderRepo.update(order.id, {
       draft: false,
       status: OrderEnumType.OPENED,
     });
