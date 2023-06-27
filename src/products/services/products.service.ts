@@ -82,4 +82,29 @@ export class ProductsService {
       relations: ['category'],
     });
   }
+
+  /**
+   * Find all Products with they categories
+   *
+   * @returns All Products with they categories
+   */
+  async getAllProductsWithCategories() {
+    return this.product.find({
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        description: true,
+        banner: true,
+        category: {
+          id: true,
+          name: true,
+        },
+      },
+      order: {
+        created_at: 'DESC',
+      },
+      relations: ['category'],
+    });
+  }
 }

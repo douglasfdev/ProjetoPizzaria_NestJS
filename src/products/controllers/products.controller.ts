@@ -62,4 +62,9 @@ export class ProductsController {
   ): Promise<Array<Product>> {
     return this.productsService.productsByCategory(categoryId);
   }
+
+  @Get()
+  async getAllProductsWithCategories() {
+    return this.productsService.getAllProductsWithCategories();
+  }
 }

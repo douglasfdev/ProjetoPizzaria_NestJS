@@ -15,7 +15,7 @@ export const dataSourceOptions = {
   password: process.env.POSTGRES_PASSWORD,
   migrations: ['dist/**/migrations/*.js'],
   entities: ['dist/**/*.entity.js'],
-  synchronize: true, //never use true on production,
+  synchronize: false, //never use true on production,
   migrationsRun: true,
   autoLoadEntites: true,
 } as DataSourceOptions;
