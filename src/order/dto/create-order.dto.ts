@@ -3,7 +3,7 @@ import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 export class CreateOrderDto {
   @IsNumber()
   @IsOptional()
-  table: number;
+  table?: number;
 
   @IsNumber()
   @IsOptional()

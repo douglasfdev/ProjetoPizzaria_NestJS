@@ -29,7 +29,10 @@ export class OrderService {
   }
 
   async attendOrder(id: string, createOrderDto: CreateOrderDto) {
-    return this.orderRepo.update(id, {
+    await this.orderRepo.findOneBy({ id });
+
+    return this.orderRepo.save({
+      id,
       draft: false,
       status: OrderEnumType.OPENED,
       ...createOrderDto,
