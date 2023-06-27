@@ -53,13 +53,14 @@ export class OrderService {
     });
   }
 
-  async listOrders() {
+  async listOrdersOpened() {
     return this.orderRepo.find({
       select: {
         id: true,
         table: true,
         name: true,
         status: true,
+        draft: true,
       },
       where: {
         draft: false,
@@ -95,6 +96,22 @@ export class OrderService {
         order: { id },
       },
       relations: ['order', 'products'],
+    });
+  }
+
+  async listOrders() {
+    return this.orderRepo.find({
+      select: {
+        id: true,
+        table: true,
+        name: true,
+        status: true,
+        draft: true,
+      },
+      where: {
+        draft: true,
+        status: OrderEnumType.OPENED,
+      },
     });
   }
 }

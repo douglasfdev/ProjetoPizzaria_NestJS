@@ -11,7 +11,7 @@ import { OrderService } from '../services/order.service';
 import { CreateOrderDto } from '../dto/create-order.dto';
 
 @Controller({
-  path: 'order',
+  path: 'orders',
   version: '1',
 })
 export class OrderController {
@@ -38,13 +38,18 @@ export class OrderController {
     return { message: 'Ordem de serviço fechada com sucesso' };
   }
 
-  @Get('orders')
+  @Get('opened')
   async listOrdersPendingAndOpened() {
-    return this.orderService.listOrders();
+    return this.orderService.listOrdersOpened();
   }
 
   @Get(':id/item')
-  async listOrders(@Param('id') id: string) {
+  async listOrderByItems(@Param('id') id: string) {
     return this.orderService.listOrderByItems(id);
+  }
+
+  @Get()
+  async listOrders() {
+    return this.orderService.listOrders();
   }
 }
