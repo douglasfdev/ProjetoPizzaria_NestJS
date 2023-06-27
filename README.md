@@ -101,7 +101,3 @@ GET localhost:5555/v1/user/${email}
 | :---------- | :--------- | :---------------------------------- |
 | `email` | `string` | **Obrigatório**. e-mail cadastrado do usuário|
 </details>
-
- ---
-> **Warning**
-> O Docker não está instalando o swagger, pois ele está com um plugin na cli do nest que o Docker não está reconhecendo, API será refatorada para contemplar o swagger no projeto.
