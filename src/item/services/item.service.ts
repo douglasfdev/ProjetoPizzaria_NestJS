@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { Order } from 'src/order/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
 import { ItemEnumType } from 'src/enum/ItemEnum';
+import { OrderEnumType } from 'src/enum/OrderEnum';
 
 @Injectable()
 export class ItemService {
@@ -38,11 +39,16 @@ export class ItemService {
       products,
     });
 
+    await this.orderRepo.update(order, {
+      draft: false,
+      status: OrderEnumType.OPENED,
+    });
+
     const savedItem = await this.itemRepo.save(createdItem);
 
     return {
-      ...savedItem,
       id: savedItem.id,
+      ...savedItem,
       created_at: undefined,
       updated_at: undefined,
     };
