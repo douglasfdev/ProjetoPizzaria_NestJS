@@ -40,7 +40,7 @@ export class createTbUser1670763480230 implements MigrationInterface {
             name: 'role',
             type: 'enum',
             enum: [UserRole.Administrador, UserRole.Garcom],
-            default: [UserRole.Administrador],
+            default: UserRole.Administrador,
             isNullable: false,
           },
         ],

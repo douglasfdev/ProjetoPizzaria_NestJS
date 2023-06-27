@@ -26,7 +26,8 @@
     "migration:revert": "npm run typeorm -- migration:revert",
     "typeorm:sync": "typeorm schema:sync -d dist/database/data-source.js",
     "generate:models": "dotenv -- npx typeorm-model-generator -h ${DB_HOST} -d ${POSTGRES_DB} -u ${POSTGRES_USER} -x ${POSTGRES_PASSWORD} -e ${PG} --ssl --noConfig --generateMigration",
-    "docker-compose:dev": "docker-compose -f docker-compose.yml up --build"
+    "generate:model": "sh migrations.sh",
+    "docker-compose:dev": "docker-compose -f docker-compose.yml up -d --build"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.0",
