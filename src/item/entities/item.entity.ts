@@ -1,4 +1,4 @@
-import { ItemEnumType } from 'src/enum/ItemEnum';
+import { ItemEnumType } from 'src/enum';
 import { Order } from 'src/order/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
 import {

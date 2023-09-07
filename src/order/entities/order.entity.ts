@@ -1,4 +1,4 @@
-import { OrderEnumType } from 'src/enum/OrderEnum';
+import { OrderEnumType } from 'src/enum';
 import { Item } from 'src/item/entities/item.entity';
 import {
   Column,

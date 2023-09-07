@@ -3,7 +3,7 @@ import { CreateOrderDto } from '../dto/create-order.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Order } from '../entities/order.entity';
-import { OrderEnumType } from 'src/enum/OrderEnum';
+import { OrderEnumType } from 'src/enum';
 import { Item } from 'src/item/entities/item.entity';
 
 @Injectable()

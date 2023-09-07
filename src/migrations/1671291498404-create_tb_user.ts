@@ -1,4 +1,4 @@
-import { UserRole } from 'src/enum/UserRole';
+import { UserRole } from 'src/enum';
 import {
   MigrationInterface,
   QueryRunner,

@@ -5,8 +5,8 @@ import { Item } from '../entities/item.entity';
 import { Repository } from 'typeorm';
 import { Order } from 'src/order/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
-import { ItemEnumType } from 'src/enum/ItemEnum';
-import { OrderEnumType } from 'src/enum/OrderEnum';
+import { ItemEnumType } from 'src/enum';
+import { OrderEnumType } from 'src/enum';
 
 @Injectable()
 export class ItemService {
